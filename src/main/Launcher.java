@@ -5,6 +5,7 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
 
+import ressources.Ressources;
 import states.TitleScreen;
 
 public class Launcher extends StateBasedGame {
@@ -29,6 +30,14 @@ public class Launcher extends StateBasedGame {
 			app.setShowFPS(false);
 			app.setFullscreen(false);
 			app.setIcon("Pictures/icon.png");
+			app.setMusicOn(true);
+			app.setSoundOn(true);
+			app.setMusicVolume(1);
+			app.setSoundVolume(1);
+			Ressources.initFonts();
+			Ressources.initMusic();
+			Ressources.initSounds();
+			Ressources.initSprite();
 			app.start();
 		} catch(SlickException e){
 			e.printStackTrace();

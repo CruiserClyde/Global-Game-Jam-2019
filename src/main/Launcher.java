@@ -18,7 +18,6 @@ public class Launcher extends StateBasedGame {
 	public void initStatesList(GameContainer gc) throws SlickException {
 		// TODO Auto-generated method stub
 		addState(new TitleScreen());
-
 	}
 
 	public static void main(String[] args) {

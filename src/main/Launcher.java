@@ -12,7 +12,7 @@ public class Launcher extends StateBasedGame {
 	}
 
 	@Override
-	public void initStatesList(GameContainer arg0) throws SlickException {
+	public void initStatesList(GameContainer gc) throws SlickException {
 		// TODO Auto-generated method stub
 
 	}

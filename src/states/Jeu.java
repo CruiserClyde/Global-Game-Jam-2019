@@ -105,22 +105,23 @@ public class Jeu extends BasicGameState {
 
 		if(!vague)
 		{
-		g.setColor(Color.gray);
-		g.fillRect(600, 0, 600, 800);
-		g.setColor(Color.white);
-		g.fillRect(625, 20, 160 , 160);
-		g.fillRect(625, 200, 160 , 160);
-		g.fillRect(625, 380, 160 , 160);
-		g.fillRect(625, 560, 160 , 160);
-		g.drawString("Krédits :", 610, 750);
-		}
+			g.setColor(Color.gray);
+			g.fillRect(600, 0, 600, 800);
+			g.setColor(Color.white);
+			g.fillRect(625, 20, 160 , 160);
+			g.fillRect(625, 200, 160 , 160);
+			g.fillRect(625, 380, 160 , 160);
+			g.fillRect(625, 560, 160 , 160);
+			g.drawString("Krédits :", 610, 750);
 		
-		if(!vague)
-		{
 			for(int i = 0; i < 4; i++)
 			{
 				nextUpgrade[i].render(g);
 			}
+			
+			//Input input =gc.getInput();
+			
+			
 		}
 		
 	}

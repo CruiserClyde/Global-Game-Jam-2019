@@ -21,7 +21,7 @@ import main.Launcher;
 import pathfinderlib.basics.Matrix;
 import ressources.Ressources;
 
-public final class Container implements Serializable, Rendering {
+public final class Container implements Serializable,Rendering {
 	private static final long serialVersionUID = -3167976635446965294L;
 	private Matrix<Entity> entities;
 	private Matrix<Weapon> weapons;

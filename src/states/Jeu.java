@@ -10,9 +10,13 @@ import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
-import com.sun.xml.internal.ws.api.server.Container;
-
+import gameplay.Container;
+import main.Launcher;
+import pathfinderlib.basics.Matrix;
 import pathfinderlib.basics.Moves;
+import pathfinderlib.basics.State;
+import pathfinderlib.exceptions.PathfindingException;
+import pathfinderlib.pathfinder.PathFinder;
 
 public class Jeu extends BasicGameState {	
 	private Image maison;
@@ -20,12 +24,17 @@ public class Jeu extends BasicGameState {
 	private boolean pause;
 	private Container container;
 	
+	
+	
 	public Jeu() {	
 	}
 
 	@Override
 	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
-		maison=new Image("pictures/logo.png");
+		maison=new Image("ressources/pictures/logo.png");
+		container = new Container(); 
+		
+		
 		choix=0;
 		pause=false;
 	}
@@ -33,6 +42,9 @@ public class Jeu extends BasicGameState {
 	@Override
 	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
 		maison.draw(250,150);
+		container.getHouse().render(g);
+		
+		
 
 	}
 
@@ -59,9 +71,20 @@ public class Jeu extends BasicGameState {
 		//load
 	}
 	
-//	private Vector<Moves> calculatePathToHouse(Point start) {
-//		return null;
-//	}
+	public Vector<Moves> calculatePathToHouse(Point start) throws PathfindingException {
+		Matrix<State> laby = new Matrix<State>(Launcher.WIDTH, Launcher.HEIGHT);
+		for (int i=0;i<Launcher.WIDTH;i++) {
+			for (int k=0;k<Launcher.HEIGHT;k++) {
+				if (container.getEntities().get(i, k) != null || container.getWeapons().get(i, k) != null) {
+					laby.set(i, k, State.Obstacle);
+				} else {
+					laby.set(i, k, State.Void);
+				}
+			}
+		}
+		PathFinder pf = new PathFinder(laby, start, new Point(container.getHouse().getPositionX()+(container.getHouse().getTailleX()/2), container.getHouse().getPositionY()+(container.getHouse().getTailleY()/2)));
+		return pf.searchPath();
+	}
 	
 	@Override
 	public int getID() {

@@ -5,19 +5,21 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
 
+import states.Jeu;
+import states.Pause;
 import states.TitleScreen;
 
 public class Launcher extends StateBasedGame {
 
 	public Launcher(String name) {
 		super(name);
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
 	public void initStatesList(GameContainer gc) throws SlickException {
-		// TODO Auto-generated method stub
 		addState(new TitleScreen());
+		addState(new Jeu());
+		addState(new Pause());
 
 	}
 

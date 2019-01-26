@@ -102,74 +102,70 @@ public class Jeu extends BasicGameState {
 		nextUpgrade[1] = murStandard;
 		nextUpgrade[2] = toitTuile;
 		nextUpgrade[3] = fenetreStandard;
-
 	}
 
 	@Override
-	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
-		
+	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {		
 		container.render(g);
-
-		
-		
 
 		if(!vague)
 		{
-		g.setColor(Color.gray);
-		g.fillRect(600, 0, 600, 800);
-		g.setColor(Color.white);
-		g.fillRect(625, 10, 160 , 160);
-		g.fillRect(625, 190, 160 , 160);
-		g.fillRect(625, 370, 160 , 160);
-		g.fillRect(625, 550, 160 , 160);
-		g.setColor(Color.black);
-		g.drawString("Krédits: "+ kredit, 610, 750);
-		if(kredit>=prixM+kredit) {
-			achatM=true;
+			g.setColor(Color.gray);
+			g.fillRect(600, 0, 600, 800);
 			g.setColor(Color.white);
-			g.drawString("upgrade: "+prixM+" K", 625, 170);	
+			g.fillRect(625, 10, 160 , 160);
+			g.fillRect(625, 190, 160 , 160);
+			g.fillRect(625, 370, 160 , 160);
+			g.fillRect(625, 550, 160 , 160);
+			g.setColor(Color.black);
+			g.drawString("Krédits: "+ kredit, 610, 750);
+			
+			if(kredit>=prixM+kredit) {
+				achatM=true;
+				g.setColor(Color.white);
+				g.drawString("upgrade: "+prixM+" K", 625, 170);	
+			}
+			else {
+				achatM=false;
+				g.setColor(Color.darkGray);
+				g.drawString("upgrade: "+prixM+" K", 625, 170);	
+			}
+			if(kredit>=prixT) {
+				achatT=true;
+				g.setColor(Color.white);
+				g.drawString("upgrade: "+prixT+" K", 625, 350);
+			}
+			else {
+				achatT=false;
+				g.setColor(Color.darkGray);
+				g.drawString("upgrade: "+prixT+" K", 625, 350);	
+			}
+			if(kredit>=prixP) {
+				achatP=true;
+				g.setColor(Color.white);
+				g.drawString("upgrade: "+prixP+" K", 625, 530);
+			}
+			else {
+				achatP=false;
+				g.setColor(Color.darkGray);
+				g.drawString("upgrade: "+prixP+" K", 625, 530);	
+			}
+			if(kredit>=prixF) {
+				achatF=true;
+				g.setColor(Color.white);
+				g.drawString("upgrade: "+prixF+" K", 625, 710);
+			}
+			else {
+				achatF=false;
+				g.setColor(Color.darkGray);
+				g.drawString("upgrade: "+prixF+" K", 625, 710);	
+			}
+			for(int i = 0; i < 4; i++)
+			{
+				nextUpgrade[i].render(g);
+			}
+			//zone trigger cliqué
 		}
-		else {
-			achatM=false;
-			g.setColor(Color.darkGray);
-			g.drawString("upgrade: "+prixM+" K", 625, 170);	
-		}
-		if(kredit>=prixT) {
-			achatT=true;
-			g.setColor(Color.white);
-			g.drawString("upgrade: "+prixT+" K", 625, 350);
-		}
-		else {
-			achatT=false;
-			g.setColor(Color.darkGray);
-			g.drawString("upgrade: "+prixT+" K", 625, 350);	
-		}
-		if(kredit>=prixP) {
-			achatP=true;
-			g.setColor(Color.white);
-			g.drawString("upgrade: "+prixP+" K", 625, 530);
-		}
-		else {
-			achatP=false;
-			g.setColor(Color.darkGray);
-			g.drawString("upgrade: "+prixP+" K", 625, 530);	
-		}
-		if(kredit>=prixF) {
-			achatF=true;
-			g.setColor(Color.white);
-			g.drawString("upgrade: "+prixF+" K", 625, 710);
-		}
-		else {
-			achatF=false;
-			g.setColor(Color.darkGray);
-			g.drawString("upgrade: "+prixF+" K", 625, 710);	
-		}
-		for(int i = 0; i < 4; i++)
-		{
-			nextUpgrade[i].render(g);
-		}
-		//zone trigger cliqué
-	}
 
 		
 	}

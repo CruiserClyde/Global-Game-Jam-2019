@@ -57,7 +57,7 @@ public class Jeu extends BasicGameState {
 	private Roof toitPierre;
 	private Window fenetrePierre;
 	
-	boolean bite;
+	boolean quit;
 	public Jeu() {	
 	}
 
@@ -183,7 +183,7 @@ public class Jeu extends BasicGameState {
 			pause=false;
 			sbg.enterState(3);
 		}
-		if(bite)
+		if(quit)
 			gc.exit();
 		
 	}

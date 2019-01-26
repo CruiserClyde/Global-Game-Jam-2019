@@ -1,9 +1,9 @@
-1 => herbe
-2 => herbe avec fleurs
+1 => grass
+2 => grassFlowers
 3 => vide
-4 => Chemin droit
-5 => Chemin coudé 
+4 => pathNormal
+5 => pathAngled 
 6 => vide
-7 => gros caillou
-8 => petits cailloux
+7 => bigRock
+8 => smallRocks
 9 => vide  

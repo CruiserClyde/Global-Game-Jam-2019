@@ -57,6 +57,7 @@ public final class Ressources {
 
 	public static void initMusic() throws SlickException {
 		// Music inits
+		MUSICS.put("main", new Music("ressources/musics/main.ogg"));
 	}
 
 	public static void initSprite() throws SlickException {

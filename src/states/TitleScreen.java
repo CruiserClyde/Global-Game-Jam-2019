@@ -39,6 +39,7 @@ public class TitleScreen extends BasicGameState {
 		Ressources.initMusic();
 		Ressources.initSounds();
 		Ressources.initSprite();
+		Ressources.MUSICS.get("main").loop();
 	}
 
 	@Override

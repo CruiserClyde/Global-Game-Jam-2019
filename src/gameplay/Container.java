@@ -44,6 +44,8 @@ public final class Container implements Serializable, Rendering {
 	@Override
 	public void render(Graphics g) {
 		// TODO Auto-generated method stub
+		
+		
 		house.render(g);
 		for (int i=0;i<Launcher.WIDTH/32;i++) {
 			for (int k=0;k<Launcher.HEIGHT/32;k++) {

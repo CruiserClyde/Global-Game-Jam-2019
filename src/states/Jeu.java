@@ -37,7 +37,6 @@ public class Jeu extends BasicGameState {
 	private Composant nextUpgrade[];
 	int kredit,prixM,prixT,prixF,prixP;
 	
-	int caca=7;
 	private Door porteNul;
 	private Wall murNul;
 	private Roof toitNul;
@@ -157,18 +156,12 @@ public class Jeu extends BasicGameState {
 			g.setColor(Color.darkGray);
 			g.drawString("upgrade: "+prixF+" K", 625, 710);	
 		}
-			}
-		
-		
-		if(!vague)
+		for(int i = 0; i < 4; i++)
 		{
-			for(int i = 0; i < 4; i++)
-			{
-				nextUpgrade[i].render(g);
-			}
+			nextUpgrade[i].render(g);
 		}
-		if(caca!=7)
-			gc.exit();
+	}
+
 		
 	}
 

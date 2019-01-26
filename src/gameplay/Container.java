@@ -8,6 +8,7 @@ import gameplay.characters.Entity;
 import gameplay.house.Door;
 import gameplay.house.House;
 import gameplay.house.Roof;
+import gameplay.house.Tier;
 import gameplay.house.Wall;
 import gameplay.house.Window;
 import gameplay.weapons.Weapon;
@@ -31,10 +32,10 @@ public final class Container implements Serializable {
 		weapons = new Matrix<Weapon>(Launcher.WIDTH/32, Launcher.HEIGHT/32);
 		//house init
 		//test
-		porteNul = new Door (100, 0, 0, 2,(float) 0.5, 1, 1,"porteStandard");
-		murNul = new Wall (100, 0, 0, 2,(float) 0.5, 1, 1,"murStandard");
-		toitNul = new Roof (100, 0, 0, 2,(float) 0.5, 1, 1,"toitTuile");
-		fenetreNul = new Window (100, 0, 0, 2,(float) 0.5, 1, 1,"fenetreStandard");
+		porteNul = new Door (0,"porteNul",Tier.Nul);
+		murNul = new Wall (0,"murNul",Tier.Nul);
+		toitNul = new Roof (0,"toitNul",Tier.Nul);
+		fenetreNul = new Window (0,"fenetreNul", Tier.Nul);
 		house = new House(10,10,murNul,toitNul,porteNul,fenetreNul);
 	}
 	

@@ -1,4 +1,4 @@
-package gameplay;
+package gameplay.house;
 
 public class Garden 
 {

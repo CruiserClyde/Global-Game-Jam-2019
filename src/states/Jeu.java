@@ -1,4 +1,7 @@
 package states;
+import java.awt.Point;
+import java.util.Vector;
+
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
@@ -7,16 +10,15 @@ import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
-public class Jeu extends BasicGameState {
+import com.sun.xml.internal.ws.api.server.Container;
 
-	@Override
-	public int getID() {
-		return 1;
-	}
-	
-	Image maison;
-	int choix;
-	boolean pause;
+import pathfinderlib.basics.Moves;
+
+public class Jeu extends BasicGameState {	
+	private Image maison;
+	private int choix;
+	private boolean pause;
+	private Container container;
 	
 	public Jeu() {	
 	}
@@ -26,7 +28,6 @@ public class Jeu extends BasicGameState {
 		maison=new Image("pictures/logo.png");
 		choix=0;
 		pause=false;
-
 	}
 
 	@Override
@@ -41,13 +42,30 @@ public class Jeu extends BasicGameState {
 			pause=false;
 			sbg.enterState(2);
 		}
-	}	
+	}
 
+	@Override
 	public void keyPressed(int key, char c) {
 		super.keyPressed(key, c);
 		if(key==Input.KEY_ESCAPE)
 			pause=true;
 	}
 	
+	public void save() {
+		//save
+	}
+	
+	private void load() {
+		//load
+	}
+	
+	private Vector<Moves> calculatePathToHouse(Point start) {
+		return null;
+	}
+	
+	@Override
+	public int getID() {
+		return 1;
+	}
 
 }

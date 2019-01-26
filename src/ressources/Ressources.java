@@ -49,6 +49,11 @@ public final class Ressources {
 		SPRITES.put("kredit",new Image("ressources/pictures/Kredit.png"));
 		SPRITES.put("placeHolder",new Image("ressources/pictures/placeHolder.png"));
 		
+		SPRITES.put("porteNul",new Image("ressources/pictures/porteNul.png"));
+		SPRITES.put("fenetreNul",new Image("ressources/pictures/fenetreNul.png"));
+		SPRITES.put("toitNul",new Image("ressources/pictures/toitNul.png"));
+		SPRITES.put("murNul",new Image("ressources/pictures/murNul.png"));
+		
 		SPRITES.put("porteStandard",new Image("ressources/pictures/porteStandard.png"));
 		SPRITES.put("fenetreStandard",new Image("ressources/pictures/fenetreStandard.png"));
 		SPRITES.put("toitTuile",new Image("ressources/pictures/toitTuile.png"));

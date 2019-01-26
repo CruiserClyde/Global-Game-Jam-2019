@@ -5,9 +5,9 @@ import org.newdawn.slick.SlickException;
 public class Roof extends Composant 
 {
 
-	public Roof(int PV, int def, int prix, float fRes, float lRes, float gRes, float aRes, String texture)
+	public Roof(int prix, String texture,Tier tier)
 	{
-		super(PV, def, prix, fRes, lRes, gRes, aRes,texture);
+		super(prix,texture,tier);
 	}
 
 }

@@ -14,7 +14,6 @@ public class House implements Serializable, Rendering
 	private int tailleY; //en case
 	private int PV;
 	private int PVMax;
-	private int def; // stat de deffance
 	private Composant comp[];
 	private int regenRate;
 	
@@ -34,16 +33,14 @@ public class House implements Serializable, Rendering
 		this.tailleX = 5;
 		this.tailleY = 5;
 		
-		def = 0;
-		PVMax = (int) (10*(tailleX+tailleY)); //détermination es PV de base en fonction de la taille
+		PVMax = 0; //détermination es PV de base en fonction de la taille
 		for(int i = 0; i < comp.length; i++) //bonus des composants
 		{
 			PVMax += comp[i].getBonusPV();
-			def += comp[i].getBonusDef();
-			fireResistance = comp[i].getFireResistance();
-			lightnigResistance = comp[i].getLightningResistance();
-			groundResistance = comp[i].getGroundResistance();
-			acideResistance = comp[i].getAcideResistance();
+			fireResistance = comp[i].getTier().getFireResistance();
+			lightnigResistance = comp[i].getTier().getLightningResistance();
+			groundResistance = comp[i].getTier().getGroundResistance();
+			acideResistance = comp[i].getTier().getAcideResistance();
 		}
 		PV = PVMax;
 		
@@ -86,19 +83,19 @@ public class House implements Serializable, Rendering
 		switch(element)
 		{
 			case 0:
-				damage *= lightnigResistance;
+				damage -= lightnigResistance;
 				break;
 			case 1:
-				damage *= fireResistance;
+				damage -= fireResistance;
 				break;
 			case 2:
-				damage *= groundResistance;
+				damage -= groundResistance;
 				break;
 			case 3:
-				damage *= acideResistance;
+				damage -= acideResistance;
 				break;
 		}
-		PV -= damage-def;
+		PV -= damage;
 		
 		regenRate = (int) (100*PV/PVMax);
 	}

@@ -12,6 +12,11 @@ import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
 import gameplay.Container;
+import gameplay.house.Door;
+import gameplay.house.Roof;
+import gameplay.house.Tier;
+import gameplay.house.Wall;
+import gameplay.house.Window;
 import main.Launcher;
 import pathfinderlib.basics.Matrix;
 import pathfinderlib.basics.Moves;
@@ -29,6 +34,22 @@ public class Jeu extends BasicGameState {
 	private boolean pause,vague;
 	private Container container;
 	
+	
+	private Door porteNul;
+	private Wall murNul;
+	private Roof toitNul;
+	private Window fenetreNul;
+	
+	private Door porteStandard;
+	private Wall murStandard;
+	private Roof toitTuile;
+	private Window fenetreStandard;
+	
+	private Door porteBois;
+	private Wall murBois;
+	private Roof toitBois;
+	private Window fenetreBois;
+	
 	public Jeu() {	
 	}
 
@@ -37,6 +58,21 @@ public class Jeu extends BasicGameState {
 		container = new Container(); 
 		pause=false;
 		vague=false;
+		
+		porteNul = new Door (10,"porteNul",Tier.Nul);
+		murNul = new Wall (20,"murNul",Tier.Nul);
+		toitNul = new Roof (20,"toitNul",Tier.Nul);
+		fenetreNul = new Window (5,"fenetreNul",Tier.Nul);
+		
+		porteStandard = new Door (10,"porteStandard",Tier.Standard);
+		murStandard = new Wall (20,"murStandard",Tier.Standard);
+		toitTuile = new Roof (20,"toitTuile",Tier.Standard);
+		fenetreStandard = new Window (5,"fenetreStandard",Tier.Standard);
+		
+		porteBois = new Door (10,"porteBoisSolide",Tier.Bois);
+		murBois = new Wall (20,"murBoisSolide",Tier.Bois);
+		toitBois = new Roof (20,"toitBoisSolide",Tier.Bois);
+		fenetreBois = new Window (5, "fenetreBoisSolide",Tier.Bois);
 
 	}
 
@@ -55,7 +91,7 @@ public class Jeu extends BasicGameState {
 
 	@Override
 	public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException {
-		System.out.println(vague);
+		
 		if(pause) {
 			pause=false;
 			sbg.enterState(3);

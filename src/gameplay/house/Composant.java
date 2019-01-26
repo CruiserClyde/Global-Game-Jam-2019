@@ -15,22 +15,17 @@ public abstract class Composant implements Serializable
 	private int prix;
 	private Image texture;
 	
-	private float fireResistance;
-	private float lightnigResistance;
-	private float groundResistance;
-	private float acideResistance;
+	
+	private Tier tier;
 	
 	
-	public Composant(int PV, int def, int prix, float fRes, float lRes, float gRes, float aRes, String texture)
+	public Composant(int prix, String texture, Tier tier)
 	{
-		bonusPV = PV;
+		this.tier = tier;
+		bonusPV = this.tier.getPV();
 		this.prix = prix;
-		bonusDef = def;
 		this.texture = Ressources.SPRITES.get(texture);
-		fireResistance = fRes;
-		lightnigResistance = lRes;
-		groundResistance = gRes;
-		acideResistance = aRes;
+		
 	}
 	
 	public int getBonusPV()
@@ -48,24 +43,9 @@ public abstract class Composant implements Serializable
 		return bonusDef;
 	}
 	
-	public float getFireResistance()
+	public Tier getTier()
 	{
-		return fireResistance;
-	}
-	
-	public float getLightningResistance()
-	{
-		return lightnigResistance;
-	}
-	
-	public float getGroundResistance()
-	{
-		return groundResistance;
-	}
-	
-	public float getAcideResistance()
-	{
-		return acideResistance;
+		return tier;
 	}
 	
 	public Image getTexture()

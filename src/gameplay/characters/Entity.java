@@ -24,12 +24,10 @@ public abstract class Entity implements Serializable, Rendering {
 	private String sprite;
 	
 	public Entity(int x, int y) {
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
 	public void render(Graphics g) {
-		// TODO Auto-generated method stub
 		g.drawImage(Ressources.SPRITES.get(sprite), x, y);
 	}	
 }

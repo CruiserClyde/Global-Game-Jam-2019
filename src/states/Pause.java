@@ -36,16 +36,16 @@ public class Pause extends BasicGameState {
 		g.drawString("PAUSE",300,200);
 		if(choix == 0) {
 			g.setColor(Color.red);
-			g.drawString("Reprendre",250,250);
+			g.drawString("Reprendre", 250,250);
 			g.setColor(Color.white);
-			g.drawString("Sauvegarder/Retour menu", 250, 270);
+			g.drawString("Sauvegarder / Retour menu", 250, 270);
 			g.drawString("Menu Principal",250,290);
 		}
 		else if(choix == 1) {
 			g.setColor(Color.white);
 			g.drawString("Reprendre",250,250);
 			g.setColor(Color.red);
-			g.drawString("Sauvegarder/Retour menu", 250, 270);
+			g.drawString("Sauvegarder / Retour menu", 250, 270);
 			g.setColor(Color.white);
 			g.drawString("Menu Principal",250,290);			
 		}
@@ -53,7 +53,7 @@ public class Pause extends BasicGameState {
 			g.setColor(Color.white);
 			g.drawString("Reprendre",250,250);
 			g.setColor(Color.white);
-			g.drawString("Sauvegarder/Retour menu", 250, 270);
+			g.drawString("Sauvegarder / Retour menu", 250, 270);
 			g.setColor(Color.red);
 			g.drawString("Menu Principal",250,290);	
 		}

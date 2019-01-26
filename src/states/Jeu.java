@@ -24,8 +24,6 @@ public class Jeu extends BasicGameState {
 	private boolean pause;
 	private Container container;
 	
-	
-	
 	public Jeu() {	
 	}
 
@@ -44,8 +42,6 @@ public class Jeu extends BasicGameState {
 		maison.draw(250,150);
 		container.getHouse().render(g);
 		
-		
-
 	}
 
 	@Override

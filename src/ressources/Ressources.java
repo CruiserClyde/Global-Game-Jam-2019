@@ -87,6 +87,13 @@ public final class Ressources {
 		SPRITES.put("murPierre",new Image("ressources/pictures/homeRock/murPierre.png"));
 		// Ennemies
 		SPRITES.put("zombie", new Image("ressources/pictures/charactersEnnemies/BigZombie.png"));
+		// Tiles
+		SPRITES.put("grass", new Image("ressources/pictures/Sprites/grass.png"));
+		SPRITES.put("grassFlowers", new Image("ressources/pictures/Sprites/grassFlowers.png"));
+		SPRITES.put("pathNormal", new Image("ressources/pictures/Sprites/pathNormal.png"));
+		SPRITES.put("pathAngled", new Image("ressources/pictures/Sprites/pathAngled.png"));
+		SPRITES.put("bigRock", new Image("ressources/pictures/Sprites/bigRock.png"));
+		SPRITES.put("smallRocks", new Image("ressources/pictures/Sprites/smallRocks.png"));
 	}
 	
 	public static void initAnimation() throws SlickException {

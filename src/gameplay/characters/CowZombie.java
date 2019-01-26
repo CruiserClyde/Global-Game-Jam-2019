@@ -11,8 +11,8 @@ import pathfinderlib.basics.Matrix;
 import pathfinderlib.basics.Moves;
 
 public class CowZombie extends Ennemies {
-
-	protected Image cowZombie;
+	private static final long serialVersionUID = 1362380441280261972L;
+	/*protected Image cowZombie;
 	protected int Tab[] = {0,32,64,96,128,160,192,224,256,288,320,352,384,416,448,480,512,544,576,608,640,672,704,736,768};
 	private int x = Tab[(int)Math.random()*Tab.length];
 	private int y = Tab[(int)Math.random()*Tab.length];
@@ -27,9 +27,9 @@ public class CowZombie extends Ennemies {
 	private Point depart = new Point(x,y);
 	public Vector<Moves> pathfind = calculatePathToHouse(depart);
 
-	public CowZombie() {
-		
-	}
+	*/public CowZombie() {
+		super(0, 0, 0, 0, 0, "", null);
+	}/*
 	public  void load() throws SlickException{
 		cowZombie = new Image(sprite);
 	}
@@ -94,7 +94,7 @@ public class CowZombie extends Ennemies {
 
 	public void setSpeed(int speed) {
 		this.speed = speed;
-	}
+	}*/
 	
 
 }

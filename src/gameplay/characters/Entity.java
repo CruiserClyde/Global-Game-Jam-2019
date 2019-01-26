@@ -9,25 +9,34 @@ import ressources.Ressources;
 public abstract class Entity implements Serializable, Rendering {
 	private static final long serialVersionUID = 3969755682038352456L;
 	// Vie
-	private int HPmax;
-	private int HP;
+	protected int HPmax;
+	protected int HP;
 	// Vie supplémentaire
-	private int shield;
+	protected int shield;
 	// Position
-	public int x;
-	public int y;
-	// Vitesse
-	private int speed;
+	protected int x;
+	protected int y;
 	// Dommages aux ennemis
-	private int damage;
+	protected int damage;
 	// Dommages reçus
 	private String sprite;
 	
-	public Entity(int x, int y) {
+	public Entity(int x, int y, int HPmax, int shield, int dmg, String sprite) {
+		this.x = x;
+		this.y = y;
+		this.HP = HPmax;
+		this.HPmax = HPmax;
+		this.shield = shield;
+		this.damage = dmg;
+		this.sprite = sprite;
+	}
+	
+	public void getDamage(int value) {
+		HP -= (value-shield);
 	}
 
 	@Override
 	public void render(Graphics g) {
-		g.drawImage(Ressources.SPRITES.get(sprite), x, y);
+		g.drawImage(Ressources.SPRITES.get(sprite), x*32, y*32);
 	}	
 }

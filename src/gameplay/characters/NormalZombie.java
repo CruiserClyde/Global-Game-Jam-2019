@@ -11,8 +11,8 @@ import pathfinderlib.basics.Matrix;
 import pathfinderlib.basics.Moves;
 
 public class NormalZombie extends Ennemies{
-
-	protected Image normalZombie;
+	private static final long serialVersionUID = 1480552482164050522L;
+	/*protected Image normalZombie;
 	protected int Tab[] = {0,32,64,96,128,160,192,224,256,288,320,352,384,416,448,480,512,544,576,608,640,672,704,736,768};
 	private int x = Tab[(int)Math.random()*Tab.length];
 	private int y = Tab[(int)Math.random()*Tab.length];
@@ -26,11 +26,11 @@ public class NormalZombie extends Ennemies{
 	private String sprite = "pictures/BigZombie.png";// ressource en attente du zombie normal
 	private Point depart = new Point(x,y);
 	private Vector<Moves> pathfind = calculatePathToHouse(depart);
-	private 
+	private */
 
 	public NormalZombie() {
-		
-	}
+		super(0, 0, 0, 0, 0, "", null);
+	}/*
 	public  void load() throws SlickException{
 		normalZombie = new Image(sprite);
 	}
@@ -95,7 +95,7 @@ public class NormalZombie extends Ennemies{
 
 	public void setSpeed(int speed) {
 		this.speed = speed;
-	}
+	}*/
 	
 
 }

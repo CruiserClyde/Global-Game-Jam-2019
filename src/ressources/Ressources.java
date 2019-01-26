@@ -59,6 +59,8 @@ public final class Ressources {
 		SPRITES.put("toitBoisSolide",new Image("ressources/pictures/toitBoisSolide.png"));
 		SPRITES.put("murBoisSolide",new Image("ressources/pictures/murBoisSolide.png"));
 		
+		SPRITES.put("zombie", new Image("ressources/pictures/BigZombie"));
+		
 	}
 	
 	public static void initAnimation() throws SlickException {

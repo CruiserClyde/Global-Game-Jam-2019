@@ -50,6 +50,11 @@ public class Jeu extends BasicGameState {
 	private Roof toitBois;
 	private Window fenetreBois;
 	
+	private Door portePierre;
+	private Wall murPierre;
+	private Roof toitPierre;
+	private Window fenetrePierre;
+	
 	public Jeu() {	
 	}
 
@@ -73,6 +78,11 @@ public class Jeu extends BasicGameState {
 		murBois = new Wall (20,"murBoisSolide",Tier.Bois);
 		toitBois = new Roof (20,"toitBoisSolide",Tier.Bois);
 		fenetreBois = new Window (5, "fenetreBoisSolide",Tier.Bois);
+		
+		portePierre = new Door (10,"portePierre",Tier.Pierre);
+		murPierre = new Wall (20,"murPierre",Tier.Pierre);
+		toitPierre = new Roof (20,"toitPierre",Tier.Pierre);
+		fenetrePierre = new Window (5, "fenetrePierre",Tier.Pierre);
 
 	}
 

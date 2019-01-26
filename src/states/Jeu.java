@@ -2,6 +2,7 @@ package states;
 import java.awt.Point;
 import java.util.Vector;
 
+import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
@@ -25,8 +26,7 @@ public class Jeu extends BasicGameState {
 		return 1;
 	}
 	
-	private int choix;
-	private boolean pause,fin_vague;
+	private boolean pause,vague;
 	private Container container;
 	
 	public Jeu() {	
@@ -35,27 +35,32 @@ public class Jeu extends BasicGameState {
 	@Override
 	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
 		container = new Container(); 
-		choix=0;
 		pause=false;
-		fin_vague=false;
+		vague=false;
+
 	}
 
 	@Override
 	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
+		
 		container.getHouse().render(g);
+		
+		if(!vague)
+		{
+		g.setColor(Color.gray);
+		g.fillRect(650, 0, 650, 800);
+		}
 		
 	}
 
 	@Override
 	public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException {
+		System.out.println(vague);
 		if(pause) {
 			pause=false;
 			sbg.enterState(3);
 		}
-		if(fin_vague) {
-			fin_vague=false;
-			sbg.enterState(2);
-		}
+		
 	}
 
 	@Override
@@ -64,7 +69,9 @@ public class Jeu extends BasicGameState {
 		if(key==Input.KEY_ESCAPE)
 			pause=true;
 		if(key==Input.KEY_A)
-			fin_vague=true;
+			{
+				vague = !vague;
+			}
 	}
 	
 	public void save() {

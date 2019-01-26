@@ -2,6 +2,7 @@ package ressources;
 
 import java.util.HashMap;
 
+import org.newdawn.slick.Animation;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.Music;
 import org.newdawn.slick.SlickException;
@@ -14,6 +15,7 @@ public final class Ressources {
 	public static final HashMap<String, Music> MUSICS = new HashMap<String, Music>();
 	public static final HashMap<String, Sound> SOUNDS = new HashMap<String, Sound>();
 	public static final HashMap<String, UnicodeFont> FONTS = new HashMap<String, UnicodeFont>();
+	public static final HashMap<String, Animation> ANIMATIONS = new HashMap<String, Animation>();
 
 	@SuppressWarnings("unchecked")
 	public static void initFonts() throws SlickException {
@@ -45,5 +47,9 @@ public final class Ressources {
 	public static void initSprite() throws SlickException {
 		// Sprite inits
 		SPRITES.put("kredit",new Image("ressources/pictures/Kredit.png"));
+	}
+	
+	public static void initAnimation() throws SlickException {
+		// Anim inits
 	}
 }

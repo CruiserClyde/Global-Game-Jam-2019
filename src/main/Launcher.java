@@ -6,6 +6,7 @@ import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
 
 import states.Jeu;
+import states.Pause;
 import states.TitleScreen;
 
 public class Launcher extends StateBasedGame {
@@ -18,7 +19,7 @@ public class Launcher extends StateBasedGame {
 	public void initStatesList(GameContainer gc) throws SlickException {
 		addState(new TitleScreen());
 		addState(new Jeu());
-		enterState(0);
+		addState(new Pause());
 
 	}
 

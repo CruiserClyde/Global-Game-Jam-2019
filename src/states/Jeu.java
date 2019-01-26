@@ -143,6 +143,9 @@ public class Jeu extends BasicGameState {
 		return pf.searchPath();
 	}
 	
+	public void mousePressed(int button, int x, int y) {
+		System.out.println("X:"+x+" Y:"+y);
+	}
 	
 
 }

@@ -2,8 +2,14 @@ package gameplay;
 
 import java.io.Serializable;
 
+import org.newdawn.slick.SlickException;
+
 import gameplay.characters.Entity;
+import gameplay.house.Door;
 import gameplay.house.House;
+import gameplay.house.Roof;
+import gameplay.house.Wall;
+import gameplay.house.Window;
 import gameplay.weapons.Weapon;
 import main.Launcher;
 import pathfinderlib.basics.Matrix;
@@ -14,10 +20,22 @@ public final class Container implements Serializable {
 	private Matrix<Weapon> weapons;
 	private House house;
 	
+	//test
+	private Door porteNul;
+	private Wall murNul;
+	private Roof toitNul;
+	private Window fenetreNul;
+	
 	public Container() {
 		entities = new Matrix<Entity>(Launcher.WIDTH/32, Launcher.HEIGHT/32);
 		weapons = new Matrix<Weapon>(Launcher.WIDTH/32, Launcher.HEIGHT/32);
 		//house init
+		//test
+		porteNul = new Door (100, 0, 0, 2,(float) 0.5, 1, 1,"placeHolder");
+		murNul = new Wall (100, 0, 0, 2,(float) 0.5, 1, 1,"placeHolder");
+		toitNul = new Roof (100, 0, 0, 2,(float) 0.5, 1, 1,"placeHolder");
+		fenetreNul = new Window (100, 0, 0, 2,(float) 0.5, 1, 1,"placeHolder");
+		house = new House(5,5,2,2,murNul,toitNul,porteNul,fenetreNul);
 	}
 	
 	public void setEntity(int x, int y, Entity ent) {

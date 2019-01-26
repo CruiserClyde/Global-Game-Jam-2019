@@ -10,8 +10,7 @@ import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
-import com.sun.xml.internal.ws.api.server.Container;
-
+import gameplay.Container;
 import pathfinderlib.basics.Moves;
 
 public class Jeu extends BasicGameState {	
@@ -20,12 +19,17 @@ public class Jeu extends BasicGameState {
 	private boolean pause;
 	private Container container;
 	
+	
+	
 	public Jeu() {	
 	}
 
 	@Override
 	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
-		maison=new Image("pictures/logo.png");
+		maison=new Image("ressources/pictures/logo.png");
+		container = new Container(); 
+		
+		
 		choix=0;
 		pause=false;
 	}
@@ -33,6 +37,9 @@ public class Jeu extends BasicGameState {
 	@Override
 	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
 		maison.draw(250,150);
+		container.getHouse().render(g);
+		
+		
 
 	}
 

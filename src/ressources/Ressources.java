@@ -47,6 +47,7 @@ public final class Ressources {
 	public static void initSprite() throws SlickException {
 		// Sprite inits
 		SPRITES.put("kredit",new Image("ressources/pictures/Kredit.png"));
+		SPRITES.put("placeHolder",new Image("ressources/pictures/placeHolder.png"));
 	}
 	
 	public static void initAnimation() throws SlickException {

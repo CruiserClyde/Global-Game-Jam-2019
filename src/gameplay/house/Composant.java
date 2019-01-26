@@ -5,6 +5,8 @@ import java.io.Serializable;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 
+import ressources.Ressources;
+
 public abstract class Composant implements Serializable
 {
 	private static final long serialVersionUID = 13241936481135654L;
@@ -19,12 +21,12 @@ public abstract class Composant implements Serializable
 	private float acideResistance;
 	
 	
-	public Composant(int PV, int def, int prix, float fRes, float lRes, float gRes, float aRes) throws SlickException
+	public Composant(int PV, int def, int prix, float fRes, float lRes, float gRes, float aRes, String texture)
 	{
 		bonusPV = PV;
 		this.prix = prix;
 		bonusDef = def;
-		texture = new Image("pictures/placeHolder.png");
+		this.texture = Ressources.SPRITES.get(texture);
 		fireResistance = fRes;
 		lightnigResistance = lRes;
 		groundResistance = gRes;
@@ -58,5 +60,9 @@ public abstract class Composant implements Serializable
 	public float getAcideResistance()
 	{
 		return acideResistance;
+	}
+	public Image getTexture()
+	{
+		return texture;
 	}
 }

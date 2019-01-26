@@ -2,7 +2,11 @@ package gameplay.house;
 
 import java.io.Serializable;
 
-public class House implements Serializable
+import org.newdawn.slick.Graphics;
+
+import gameplay.interfaces.Rendering;
+
+public class House implements Serializable, Rendering
 {
 	private int positionX; //en case
 	private int positionY; //en case
@@ -76,13 +80,45 @@ public class House implements Serializable
 		return tailleY;
 	}
 	
-	public void takeDamage(int damage)
+	public void takeDamage(int damage, int element)
 	{
-		
-		PV -= (int) ((damage*lightnigResistance*fireResistance*groundResistance*acideResistance)-def);
+		switch(element)
+		{
+			case 0:
+				damage *= lightnigResistance;
+				break;
+			case 1:
+				damage *= fireResistance;
+				break;
+			case 2:
+				damage *= groundResistance;
+				break;
+			case 3:
+				damage *= acideResistance;
+				break;
+		}
+		PV -= damage-def;
 		
 		regenRate = (int) (100*PV/PVMax);
 	}
+
+	@Override
+	public void render(Graphics g) 
+	{
+		g.drawImage(comp[0].getTexture(), positionX*32, positionY*32, (positionX+tailleX)*32, (positionY+tailleY)*32, 0, 0, 31, 31); //affiche le mur
+		g.drawImage(comp[1].getTexture(), positionX*32, positionY*32, (positionX+tailleX)*32, (positionY+tailleY)*32, 0, 0, 31, 31); //affiche le toit
+		g.drawImage(comp[2].getTexture(), positionX*32, positionY*32, (positionX+tailleX)*32, (positionY+tailleY)*32, 0, 0, 31, 31); //affiche la porte
+		g.drawImage(comp[3].getTexture(), positionX*32, positionY*32, (positionX+tailleX)*32, (positionY+tailleY)*32, 0, 0, 31, 31); //affiche la fenetre
+	}
+
+	@Override
+	public void update(int delta) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+
 	
 	
 	

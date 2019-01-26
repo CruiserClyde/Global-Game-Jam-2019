@@ -37,7 +37,6 @@ public abstract class Composant implements Serializable, Rendering
 	}
 	
 
-	
 	public Tier getTier()
 	{
 		return tier;

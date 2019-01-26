@@ -35,8 +35,9 @@ public class Jeu extends BasicGameState {
 	private boolean pause,vague;
 	private Container container;
 	private Composant nextUpgrade[];
+	int kredit,prixM,prixT,prixF,prixP;
 	
-	
+	int caca=7;
 	private Door porteNul;
 	private Wall murNul;
 	private Roof toitNul;
@@ -66,6 +67,11 @@ public class Jeu extends BasicGameState {
 		pause=false;
 		vague=false;
 		nextUpgrade = new Composant[4];
+		kredit=0;
+		prixM=25;
+		prixT=25;
+		prixF=25;
+		prixP=25;
 		
 		porteNul = new Door (0,"porteNul",Tier.Nul);
 		murNul = new Wall (0,"murNul",Tier.Nul);
@@ -105,24 +111,63 @@ public class Jeu extends BasicGameState {
 
 		if(!vague)
 		{
-			g.setColor(Color.gray);
-			g.fillRect(600, 0, 600, 800);
+
+		g.setColor(Color.gray);
+		g.fillRect(600, 0, 600, 800);
+		g.setColor(Color.white);
+		g.fillRect(625, 10, 160 , 160);
+		g.fillRect(625, 190, 160 , 160);
+		g.fillRect(625, 370, 160 , 160);
+		g.fillRect(625, 550, 160 , 160);
+		g.setColor(Color.red);
+		g.fillRect(625, 10, 10, 10);
+		g.fillRect(625, 190, 10, 10);
+		g.fillRect(625, 370, 10, 10);
+		g.fillRect(625, 550, 10, 10);
+		g.setColor(Color.black);
+		g.drawString("Krédits: "+ kredit, 610, 750);
+		if(kredit>=prixM) {
 			g.setColor(Color.white);
-			g.fillRect(625, 20, 160 , 160);
-			g.fillRect(625, 200, 160 , 160);
-			g.fillRect(625, 380, 160 , 160);
-			g.fillRect(625, 560, 160 , 160);
-			g.drawString("Krédits :", 610, 750);
+			g.drawString("upgrade: "+prixM+" K", 625, 170);	
+		}
+		else {
+			g.setColor(Color.darkGray);
+			g.drawString("upgrade: "+prixM+" K", 625, 170);	
+		}
+		if(kredit>=prixT) {
+			g.setColor(Color.white);
+			g.drawString("upgrade: "+prixT+" K", 625, 350);
+		}
+		else {
+			g.setColor(Color.darkGray);
+			g.drawString("upgrade: "+prixT+" K", 625, 350);	
+		}
+		if(kredit>=prixP) {
+			g.setColor(Color.white);
+			g.drawString("upgrade: "+prixP+" K", 625, 530);
+		}
+		else {
+			g.setColor(Color.darkGray);
+			g.drawString("upgrade: "+prixP+" K", 625, 530);	
+		}
+		if(kredit>=prixF) {
+			g.setColor(Color.white);
+			g.drawString("upgrade: "+prixF+" K", 625, 710);
+		}
+		else {
+			g.setColor(Color.darkGray);
+			g.drawString("upgrade: "+prixF+" K", 625, 710);	
+		}
+			}
+		
+
 		
 			for(int i = 0; i < 4; i++)
 			{
 				nextUpgrade[i].render(g);
 			}
 			
-			//Input input =gc.getInput();
 			
-			
-		}
 		
 	}
 
@@ -151,6 +196,8 @@ public class Jeu extends BasicGameState {
 			{
 				vague = !vague;
 			}
+		if(key==Input.KEY_K)
+			kredit=kredit+100;
 	}
 	
 	public void save() {

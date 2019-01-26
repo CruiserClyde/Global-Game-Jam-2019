@@ -53,15 +53,15 @@ public class House implements Serializable, Rendering
 	{
 		comp[0] = wall;
 	}
-	public void setRoof(Wall roof)
+	public void setRoof(Roof roof)
 	{
 		comp[1] = roof;
 	}
-	public void setDoor(Wall door)
+	public void setDoor(Door door)
 	{
 		comp[2] = door;
 	}
-	public void setWindow(Wall window)
+	public void setWindow(Window window)
 	{
 		comp[3] = window;
 	}

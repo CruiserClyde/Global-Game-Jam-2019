@@ -20,6 +20,18 @@ public class Launcher extends StateBasedGame {
 		// TODO Auto-generated method stub
 		addState(new TitleScreen());
 	}
+	
+	@Override
+	public void enterState(int id) {
+		// TODO Auto-generated method stub
+		try {
+			getState(id).init(getContainer(), this);
+		} catch (SlickException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		super.enterState(id);
+	}
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -29,15 +41,11 @@ public class Launcher extends StateBasedGame {
 			app.setDisplayMode(800, 600, false);
 			app.setShowFPS(false);
 			app.setFullscreen(false);
-			app.setIcon("Pictures/icon.png");
+			app.setIcon("ressources/pictures/icon.png");
 			app.setMusicOn(true);
 			app.setSoundOn(true);
 			app.setMusicVolume(1);
 			app.setSoundVolume(1);
-			Ressources.initFonts();
-			Ressources.initMusic();
-			Ressources.initSounds();
-			Ressources.initSprite();
 			app.start();
 		} catch(SlickException e){
 			e.printStackTrace();

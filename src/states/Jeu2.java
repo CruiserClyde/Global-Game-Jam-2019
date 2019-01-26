@@ -25,7 +25,7 @@ public class Jeu2 extends BasicGameState {
 
 	@Override
 	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
-		maison=new Image("pictures/logo.png");
+		maison=new Image("ressources/pictures/logo.png");
 		choix=0;
 		pause=false;
 		debut_vague=false;

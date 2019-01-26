@@ -12,7 +12,7 @@ public class Pause extends BasicGameState {
 
 	@Override
 	public int getID() {
-		return 2;
+		return 3;
 	}
 	
 	int choix,save;

@@ -19,9 +19,15 @@ import pathfinderlib.exceptions.PathfindingException;
 import pathfinderlib.pathfinder.PathFinder;
 
 public class Jeu extends BasicGameState {	
+	
+	@Override
+	public int getID() {
+		return 1;
+	}
+	
 	private Image maison;
 	private int choix;
-	private boolean pause;
+	private boolean pause,fin_vague;
 	private Container container;
 	
 	public Jeu() {	
@@ -31,10 +37,9 @@ public class Jeu extends BasicGameState {
 	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
 		maison=new Image("ressources/pictures/logo.png");
 		container = new Container(); 
-		
-		
 		choix=0;
 		pause=false;
+		fin_vague=false;
 	}
 
 	@Override
@@ -48,6 +53,10 @@ public class Jeu extends BasicGameState {
 	public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException {
 		if(pause) {
 			pause=false;
+			sbg.enterState(3);
+		}
+		if(fin_vague) {
+			fin_vague=false;
 			sbg.enterState(2);
 		}
 	}
@@ -57,6 +66,8 @@ public class Jeu extends BasicGameState {
 		super.keyPressed(key, c);
 		if(key==Input.KEY_ESCAPE)
 			pause=true;
+		if(key==Input.KEY_A)
+			fin_vague=true;
 	}
 	
 	public void save() {
@@ -82,9 +93,6 @@ public class Jeu extends BasicGameState {
 		return pf.searchPath();
 	}
 	
-	@Override
-	public int getID() {
-		return 1;
-	}
+	
 
 }

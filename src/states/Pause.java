@@ -99,6 +99,4 @@ public class Pause extends BasicGameState {
 				menu=true;
 		}
 	}
-	
-
 }

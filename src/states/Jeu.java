@@ -57,47 +57,53 @@ public class Jeu extends BasicGameState {
 	private Roof toitPierre;
 	private Window fenetrePierre;
 	
-	boolean quit;
 	public Jeu() {	
 	}
 
 	@Override
 	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
 		container = new Container(); 
+		// Général
 		pause = false;
 		vague = false;
 		nextUpgrade = new Composant[4];
 		kredit = 0;
+		// Prix
 		prixM = 25;
 		prixT = 25;
 		prixF = 25;
 		prixP = 25;
+		// Achats
 		achatM = false;
 		achatP = false;
 		achatF = false;
 		achatT = false;
-		
+
+		// Maison nulle
 		porteNul = new Door (0,"porteNul",Tier.Nul);
 		murNul = new Wall (0,"murNul",Tier.Nul);
 		toitNul = new Roof (0,"toitNul",Tier.Nul);
 		fenetreNul = new Window (0,"fenetreNul",Tier.Nul);
 		
+		// Maison standarde
 		porteStandard = new Door (25,"porteStandard",Tier.Standard);
 		murStandard = new Wall (25,"murStandard",Tier.Standard);
 		toitTuile = new Roof (25,"toitTuile",Tier.Standard);
 		fenetreStandard = new Window (25,"fenetreStandard",Tier.Standard);
 		
+		// Maison bois
 		porteBois = new Door (50,"porteBoisSolide",Tier.Bois);
 		murBois = new Wall (50,"murBoisSolide",Tier.Bois);
 		toitBois = new Roof (50,"toitBoisSolide",Tier.Bois);
 		fenetreBois = new Window (50, "fenetreBoisSolide",Tier.Bois);
 		
+		// Maison Pierre
 		portePierre = new Door (125,"portePierre",Tier.Pierre);
 		murPierre = new Wall (125,"murPierre",Tier.Pierre);
 		toitPierre = new Roof (125,"toitPierre",Tier.Pierre);
 		fenetrePierre = new Window (125, "fenetrePierre",Tier.Pierre);
 		
-		
+		// Mise à jour
 		nextUpgrade[0] = porteStandard;
 		nextUpgrade[1] = murStandard;
 		nextUpgrade[2] = toitTuile;
@@ -183,8 +189,6 @@ public class Jeu extends BasicGameState {
 			pause=false;
 			sbg.enterState(3);
 		}
-		if(quit)
-			gc.exit();
 		
 	}
 

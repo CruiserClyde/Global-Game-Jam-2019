@@ -36,6 +36,7 @@ public class TitleScreen extends BasicGameState {
 		web = false;
 		quit = false;
 		choix = 0;
+		
 		// TODO Auto-generated method stub
 		Ressources.initFonts();
 		Ressources.initMusic();
@@ -48,7 +49,7 @@ public class TitleScreen extends BasicGameState {
 	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
 		g.drawImage(Ressources.SPRITES.get("banniere"), 0, 0);
 		g.setColor(Color.white);
-		FontUtils.drawCenter(Ressources.FONTS.get("title"), "Menu Principal", 0, 200, Launcher.WIDTH, Color.white);
+		FontUtils.drawCenter(Ressources.FONTS.get("title"), "Menu Principal", 0, 200, Launcher.WIDTH, Color.green);
 		g.setFont(Ressources.FONTS.get("script"));
 		//if (Files.exists(Paths.get("saves", "save.sav"))) {
 		if(Pause.Save) {
@@ -105,45 +106,45 @@ public class TitleScreen extends BasicGameState {
 		else {
 			if (choix == 0) {
 				g.setColor(Color.gray);
-				g.drawString("Continuer", 220, 270);
+				g.drawString("Continuer", 80, 270);
 				g.setColor(Color.red);
-				g.drawString("Nouvelle Partie", 220, 310);
+				g.drawString("Nouvelle Partie", 80, 310);
 				g.setColor(Color.white);
-				g.drawString("Options", 220, 350);
-				g.drawString("Web", 220, 390);
-				g.drawString("Quitter", 220, 430);
+				g.drawString("Options", 80, 350);
+				g.drawString("Web", 80, 390);
+				g.drawString("Quitter", 80, 430);
 			}
 			else if (choix == 1) {
 				g.setColor(Color.gray);
-				g.drawString("Continuer", 220, 270);
+				g.drawString("Continuer", 80, 270);
 				g.setColor(Color.white);
-				g.drawString("Nouvelle Partie", 220, 310);
+				g.drawString("Nouvelle Partie", 80, 310);
 				g.setColor(Color.red);
-				g.drawString("Options", 220, 350);
+				g.drawString("Options", 80, 350);
 				g.setColor(Color.white);
-				g.drawString("Web", 220, 390);
-				g.drawString("Quitter", 220, 430);
+				g.drawString("Web", 80, 390);
+				g.drawString("Quitter", 80, 430);
 			}
 			else if (choix == 2) {
 				g.setColor(Color.gray);
-				g.drawString("Continuer", 220, 270);
+				g.drawString("Continuer", 80, 270);
 				g.setColor(Color.white);
-				g.drawString("Nouvelle Partie", 220, 310);
-				g.drawString("Options", 220, 350);
+				g.drawString("Nouvelle Partie", 80, 310);
+				g.drawString("Options", 80, 350);
 				g.setColor(Color.red);
-				g.drawString("Web", 220, 390);
+				g.drawString("Web", 80, 390);
 				g.setColor(Color.white);
-				g.drawString("Quitter", 220, 430);
+				g.drawString("Quitter", 80, 430);
 			}
 			else if (choix == 3) {
 				g.setColor(Color.gray);
-				g.drawString("Continuer", 220, 270);
+				g.drawString("Continuer", 80, 270);
 				g.setColor(Color.white);
-				g.drawString("Nouvelle Partie", 220, 310);
-				g.drawString("Options", 220, 350);
-				g.drawString("Web", 220, 390);
+				g.drawString("Nouvelle Partie", 80, 310);
+				g.drawString("Options", 80, 350);
+				g.drawString("Web", 80, 390);
 				g.setColor(Color.red);
-				g.drawString("Quitter", 220, 430);
+				g.drawString("Quitter", 80, 430);
 			}
 		}
 	}

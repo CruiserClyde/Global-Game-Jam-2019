@@ -44,7 +44,7 @@ public class Launcher extends StateBasedGame {
 			app.setDisplayMode(Launcher.WIDTH, Launcher.HEIGHT, false);
 			app.setShowFPS(false);
 			app.setFullscreen(false);
-			app.setIcon("ressources/pictures/icon.png");
+			app.setIcon("ressources/pictures/icon_minimized.png");
 			app.setMusicOn(true);
 			app.setSoundOn(true);
 			app.setMusicVolume(1);

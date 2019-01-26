@@ -57,25 +57,24 @@ public class Jeu extends BasicGameState {
 	private Roof toitPierre;
 	private Window fenetrePierre;
 	
-	boolean quit;
 	public Jeu() {	
 	}
 
 	@Override
 	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
 		container = new Container(); 
-		pause = false;
-		vague = false;
+		pause=false;
+		vague=false;
 		nextUpgrade = new Composant[4];
-		kredit = 0;
-		prixM = 25;
-		prixT = 25;
-		prixF = 25;
-		prixP = 25;
-		achatM = false;
-		achatP = false;
-		achatF = false;
-		achatT = false;
+		kredit=0;
+		prixM=25;
+		prixT=25;
+		prixF=25;
+		prixP=25;
+		achatM=false;
+		achatP=false;
+		achatF=false;
+		achatT=false;
 		
 		porteNul = new Door (0,"porteNul",Tier.Nul);
 		murNul = new Wall (0,"murNul",Tier.Nul);
@@ -102,70 +101,74 @@ public class Jeu extends BasicGameState {
 		nextUpgrade[1] = murStandard;
 		nextUpgrade[2] = toitTuile;
 		nextUpgrade[3] = fenetreStandard;
+
 	}
 
 	@Override
-	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {		
+	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
+		
 		container.render(g);
+
+		
+		
 
 		if(!vague)
 		{
-			g.setColor(Color.gray);
-			g.fillRect(600, 0, 600, 800);
+		g.setColor(Color.gray);
+		g.fillRect(600, 0, 600, 800);
+		g.setColor(Color.white);
+		g.fillRect(625, 10, 160 , 160);
+		g.fillRect(625, 190, 160 , 160);
+		g.fillRect(625, 370, 160 , 160);
+		g.fillRect(625, 550, 160 , 160);
+		g.setColor(Color.black);
+		g.drawString("Krédits: "+ kredit, 610, 750);
+		if(kredit>=prixM+kredit) {
+			achatM=true;
 			g.setColor(Color.white);
-			g.fillRect(625, 10, 160 , 160);
-			g.fillRect(625, 190, 160 , 160);
-			g.fillRect(625, 370, 160 , 160);
-			g.fillRect(625, 550, 160 , 160);
-			g.setColor(Color.black);
-			g.drawString("Krédits: "+ kredit, 610, 750);
-			
-			if(kredit>=prixM+kredit) {
-				achatM=true;
-				g.setColor(Color.white);
-				g.drawString("upgrade: "+prixM+" K", 625, 170);	
-			}
-			else {
-				achatM=false;
-				g.setColor(Color.darkGray);
-				g.drawString("upgrade: "+prixM+" K", 625, 170);	
-			}
-			if(kredit>=prixT) {
-				achatT=true;
-				g.setColor(Color.white);
-				g.drawString("upgrade: "+prixT+" K", 625, 350);
-			}
-			else {
-				achatT=false;
-				g.setColor(Color.darkGray);
-				g.drawString("upgrade: "+prixT+" K", 625, 350);	
-			}
-			if(kredit>=prixP) {
-				achatP=true;
-				g.setColor(Color.white);
-				g.drawString("upgrade: "+prixP+" K", 625, 530);
-			}
-			else {
-				achatP=false;
-				g.setColor(Color.darkGray);
-				g.drawString("upgrade: "+prixP+" K", 625, 530);	
-			}
-			if(kredit>=prixF) {
-				achatF=true;
-				g.setColor(Color.white);
-				g.drawString("upgrade: "+prixF+" K", 625, 710);
-			}
-			else {
-				achatF=false;
-				g.setColor(Color.darkGray);
-				g.drawString("upgrade: "+prixF+" K", 625, 710);	
-			}
-			for(int i = 0; i < 4; i++)
-			{
-				nextUpgrade[i].render(g);
-			}
-			//zone trigger cliqué
+			g.drawString("upgrade: "+prixM+" K", 625, 170);	
 		}
+		else {
+			achatM=false;
+			g.setColor(Color.darkGray);
+			g.drawString("upgrade: "+prixM+" K", 625, 170);	
+		}
+		if(kredit>=prixT) {
+			achatT=true;
+			g.setColor(Color.white);
+			g.drawString("upgrade: "+prixT+" K", 625, 350);
+		}
+		else {
+			achatT=false;
+			g.setColor(Color.darkGray);
+			g.drawString("upgrade: "+prixT+" K", 625, 350);	
+		}
+		if(kredit>=prixP) {
+			achatP=true;
+			g.setColor(Color.white);
+			g.drawString("upgrade: "+prixP+" K", 625, 530);
+		}
+		else {
+			achatP=false;
+			g.setColor(Color.darkGray);
+			g.drawString("upgrade: "+prixP+" K", 625, 530);	
+		}
+		if(kredit>=prixF) {
+			achatF=true;
+			g.setColor(Color.white);
+			g.drawString("upgrade: "+prixF+" K", 625, 710);
+		}
+		else {
+			achatF=false;
+			g.setColor(Color.darkGray);
+			g.drawString("upgrade: "+prixF+" K", 625, 710);	
+		}
+		for(int i = 0; i < 4; i++)
+		{
+			nextUpgrade[i].render(g);
+		}
+		//zone trigger cliqué
+	}
 
 		
 	}
@@ -183,21 +186,19 @@ public class Jeu extends BasicGameState {
 			pause=false;
 			sbg.enterState(3);
 		}
-		if(quit)
-			gc.exit();
 		
 	}
 
 	@Override
 	public void keyPressed(int key, char c) {
 		super.keyPressed(key, c);
-		if(key == Input.KEY_ESCAPE)
+		if(key==Input.KEY_ESCAPE)
 			pause=true;
-		if(key == Input.KEY_A)
+		if(key==Input.KEY_A)
 			{
 				vague = !vague;
 			}
-		if(key == Input.KEY_K)
+		if(key==Input.KEY_K)
 			kredit=kredit+100;
 	}
 	
@@ -225,7 +226,6 @@ public class Jeu extends BasicGameState {
 	}
 	
 	public void mousePressed(int button, int x, int y) {
-		System.out.println("X:"+x+" Y:"+y);
 		if(button==Input.MOUSE_LEFT_BUTTON && achatM && x>=625 && x<=785 && y>=10 && y<=170){
 			kredit=kredit-prixM;
 		}

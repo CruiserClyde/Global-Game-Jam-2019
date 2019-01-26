@@ -1,7 +1,7 @@
 package states;
 
-import java.nio.file.Files;
-import java.nio.file.Paths;
+//import java.nio.file.Files;
+//import java.nio.file.Paths;
 
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;

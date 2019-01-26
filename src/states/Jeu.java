@@ -32,10 +32,10 @@ public class Jeu extends BasicGameState {
 		return 1;
 	}
 	
-	private boolean pause,vague,achatM,achatP,achatT,achatF;
+	private boolean pause,vague;
 	private Container container;
 	private Composant nextUpgrade[];
-	private int kredit,prixM,prixT,prixF,prixP;
+	int kredit,prixM,prixT,prixF,prixP;
 	
 	private Door porteNul;
 	private Wall murNul;
@@ -63,10 +63,6 @@ public class Jeu extends BasicGameState {
 	@Override
 	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
 		container = new Container(); 
-
-		// Général
-		pause = false;
-		vague = false;
 		pause=false;
 		vague=false;
 		nextUpgrade = new Composant[4];
@@ -86,30 +82,35 @@ public class Jeu extends BasicGameState {
 		achatT = false;
 
 		// Maison nulle
+=======
+		kredit=0;
+		prixM=25;
+		prixT=25;
+		prixF=25;
+		prixP=25;
+		
+>>>>>>> branch 'dev' of http://github.com/ttgc/HomeAlone3ilVersion.git
 		porteNul = new Door (0,"porteNul",Tier.Nul);
 		murNul = new Wall (0,"murNul",Tier.Nul);
 		toitNul = new Roof (0,"toitNul",Tier.Nul);
 		fenetreNul = new Window (0,"fenetreNul",Tier.Nul);
 		
-		// Maison standarde
 		porteStandard = new Door (25,"porteStandard",Tier.Standard);
 		murStandard = new Wall (25,"murStandard",Tier.Standard);
 		toitTuile = new Roof (25,"toitTuile",Tier.Standard);
 		fenetreStandard = new Window (25,"fenetreStandard",Tier.Standard);
 		
-		// Maison bois
 		porteBois = new Door (50,"porteBoisSolide",Tier.Bois);
 		murBois = new Wall (50,"murBoisSolide",Tier.Bois);
 		toitBois = new Roof (50,"toitBoisSolide",Tier.Bois);
 		fenetreBois = new Window (50, "fenetreBoisSolide",Tier.Bois);
 		
-		// Maison Pierre
 		portePierre = new Door (125,"portePierre",Tier.Pierre);
 		murPierre = new Wall (125,"murPierre",Tier.Pierre);
 		toitPierre = new Roof (125,"toitPierre",Tier.Pierre);
 		fenetrePierre = new Window (125, "fenetrePierre",Tier.Pierre);
 		
-		// Mise à jour
+		
 		nextUpgrade[0] = porteStandard;
 		nextUpgrade[1] = murStandard;
 		nextUpgrade[2] = toitTuile;
@@ -119,12 +120,37 @@ public class Jeu extends BasicGameState {
 	@Override
 	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
 		
+<<<<<<< HEAD
 		container.render(g);
+=======
+		container.getHouse().render(g);
+
+		
+		
+>>>>>>> branch 'dev' of http://github.com/ttgc/HomeAlone3ilVersion.git
 
 		if(!vague)
 		{
+<<<<<<< HEAD
 			g.setColor(Color.gray);
 			g.fillRect(600, 0, 600, 800);
+=======
+		g.setColor(Color.gray);
+		g.fillRect(600, 0, 600, 800);
+		g.setColor(Color.white);
+		g.fillRect(625, 10, 160 , 160);
+		g.fillRect(625, 190, 160 , 160);
+		g.fillRect(625, 370, 160 , 160);
+		g.fillRect(625, 550, 160 , 160);
+		g.setColor(Color.red);
+		g.fillRect(625, 10, 10, 10);
+		g.fillRect(625, 190, 10, 10);
+		g.fillRect(625, 370, 10, 10);
+		g.fillRect(625, 550, 10, 10);
+		g.setColor(Color.black);
+		g.drawString("Krédits: "+ kredit, 610, 750);
+		if(kredit>=prixM) {
+>>>>>>> branch 'dev' of http://github.com/ttgc/HomeAlone3ilVersion.git
 			g.setColor(Color.white);
 			g.fillRect(625, 10, 160 , 160);
 			g.fillRect(625, 190, 160 , 160);
@@ -179,12 +205,50 @@ public class Jeu extends BasicGameState {
 			}
 			//zone trigger cliqué
 		}
+<<<<<<< HEAD
+=======
+		else {
+			g.setColor(Color.darkGray);
+			g.drawString("upgrade: "+prixM+" K", 625, 170);	
+		}
+		if(kredit>=prixT) {
+			g.setColor(Color.white);
+			g.drawString("upgrade: "+prixT+" K", 625, 350);
+		}
+		else {
+			g.setColor(Color.darkGray);
+			g.drawString("upgrade: "+prixT+" K", 625, 350);	
+		}
+		if(kredit>=prixP) {
+			g.setColor(Color.white);
+			g.drawString("upgrade: "+prixP+" K", 625, 530);
+		}
+		else {
+			g.setColor(Color.darkGray);
+			g.drawString("upgrade: "+prixP+" K", 625, 530);	
+		}
+		if(kredit>=prixF) {
+			g.setColor(Color.white);
+			g.drawString("upgrade: "+prixF+" K", 625, 710);
+		}
+		else {
+			g.setColor(Color.darkGray);
+			g.drawString("upgrade: "+prixF+" K", 625, 710);	
+		}
+		for(int i = 0; i < 4; i++)
+		{
+			nextUpgrade[i].render(g);
+		}
+	}
+
+		
+>>>>>>> branch 'dev' of http://github.com/ttgc/HomeAlone3ilVersion.git
 	}
 
 	@Override
 	public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException {
 		
-		container.update(delta);
+		
 		switch(container.getHouse().getComp(0).getTier())
 		{
 		
@@ -234,18 +298,7 @@ public class Jeu extends BasicGameState {
 	}
 	
 	public void mousePressed(int button, int x, int y) {
-		if(button==Input.MOUSE_LEFT_BUTTON && achatM && x>=625 && x<=785 && y>=10 && y<=170){
-			kredit=kredit-prixM;
-		}
-		if(button==Input.MOUSE_LEFT_BUTTON && achatT && x>=625 && x<=785 && y>=190 && y<=350) {
-			kredit=kredit-prixT;
-		}
-		if (button==Input.MOUSE_LEFT_BUTTON && achatP && x>=625 && x<=785 && y>=370 && y<=530){
-			kredit=kredit-prixP;
-		}
-		if(button==Input.MOUSE_LEFT_BUTTON && achatF && x>=625 && x<=785 && y>=550 && y<=710) {
-			kredit=kredit-prixF;
-		}
+		System.out.println("X:"+x+" Y:"+y);
 	}
 	
 

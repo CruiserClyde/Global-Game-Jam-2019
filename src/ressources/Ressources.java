@@ -38,6 +38,21 @@ public final class Ressources {
 
 	public static void initSounds() throws SlickException {
 		// Sounds inits
+		SOUNDS.put("4/4", new Sound("ressources/sounds/4quart.ogg"));
+		SOUNDS.put("boum", new Sound("ressources/sounds/boum.ogg"));
+		SOUNDS.put("damage", new Sound("ressources/sounds/dmg.ogg"));
+		SOUNDS.put("door", new Sound("ressources/sounds/door.ogg"));
+		SOUNDS.put("elec_absorb", new Sound("ressources/sounds/elec_absorb.ogg"));
+		SOUNDS.put("elec", new Sound("ressources/sounds/elec.ogg"));
+		SOUNDS.put("intro", new Sound("ressources/sounds/intro.ogg"));
+		SOUNDS.put("jackpot", new Sound("ressources/sounds/jackpot.ogg"));
+		SOUNDS.put("psiou", new Sound("ressources/sounds/psiou.ogg"));
+		SOUNDS.put("upgrade_final", new Sound("ressources/sounds/upgrade_final.ogg"));
+		SOUNDS.put("upgrade", new Sound("ressources/sounds/upgrade.ogg"));
+		SOUNDS.put("wave", new Sound("ressources/sounds/wave.ogg"));
+		SOUNDS.put("zombie_cow", new Sound("ressources/sounds/zombie_cow.ogg"));
+		SOUNDS.put("zombie", new Sound("ressources/sounds/zombie.ogg"));
+		SOUNDS.put("zomboss", new Sound("ressources/sounds/zomboss.ogg"));
 	}
 
 	public static void initMusic() throws SlickException {

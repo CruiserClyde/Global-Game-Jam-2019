@@ -7,7 +7,6 @@ import org.newdawn.slick.state.StateBasedGame;
 
 import states.Jeu;
 import states.Pause;
-import ressources.Ressources;
 import states.TitleScreen;
 
 public class Launcher extends StateBasedGame {

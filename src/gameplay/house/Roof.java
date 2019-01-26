@@ -16,7 +16,7 @@ public class Roof extends Composant implements Rendering
 	@Override
 	public void render(Graphics g) {
 
-		g.drawImage(texture, 8,2);
+		g.drawImage(texture, 625, 230);
 		
 	}
 

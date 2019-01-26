@@ -16,7 +16,7 @@ public class Door extends Composant implements Rendering
 	@Override
 	public void render(Graphics g) {
 		
-		g.drawImage(texture, 8,3);
+		g.drawImage(texture, 625, 350);
 		
 	}
 

@@ -16,7 +16,7 @@ public class Window extends Composant implements Rendering
 	@Override
 	public void render(Graphics g) {
 
-		g.drawImage(texture, 8,4);
+		g.drawImage(texture, 625, 530);
 		
 	}
 

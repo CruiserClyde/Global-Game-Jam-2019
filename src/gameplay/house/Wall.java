@@ -17,7 +17,7 @@ public class Wall extends Composant implements Rendering
 	@Override
 	public void render(Graphics g) {
 		
-		g.drawImage(texture, 8,1);
+		g.drawImage(texture, 625, -10);
 		
 	}
 

@@ -46,6 +46,7 @@ public class Launcher extends StateBasedGame {
 			app.setSoundOn(true);
 			app.setMusicVolume(1);
 			app.setSoundVolume(1);
+			app.setTargetFrameRate(60);
 			app.start();
 		} catch(SlickException e){
 			e.printStackTrace();

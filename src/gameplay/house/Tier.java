@@ -41,5 +41,7 @@ public enum Tier {
 	public int getPV() {
 		return PV;
 	}
+	
+	
 
 }

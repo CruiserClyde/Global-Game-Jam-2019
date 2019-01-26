@@ -12,6 +12,7 @@ import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
 import gameplay.Container;
+import gameplay.house.Composant;
 import gameplay.house.Door;
 import gameplay.house.Roof;
 import gameplay.house.Tier;
@@ -33,6 +34,7 @@ public class Jeu extends BasicGameState {
 	
 	private boolean pause,vague;
 	private Container container;
+	private Composant nextUpgrade[];
 	
 	
 	private Door porteNul;
@@ -63,26 +65,33 @@ public class Jeu extends BasicGameState {
 		container = new Container(); 
 		pause=false;
 		vague=false;
+		nextUpgrade = new Composant[4];
 		
-		porteNul = new Door (10,"porteNul",Tier.Nul);
-		murNul = new Wall (20,"murNul",Tier.Nul);
-		toitNul = new Roof (20,"toitNul",Tier.Nul);
-		fenetreNul = new Window (5,"fenetreNul",Tier.Nul);
+		porteNul = new Door (0,"porteNul",Tier.Nul);
+		murNul = new Wall (0,"murNul",Tier.Nul);
+		toitNul = new Roof (0,"toitNul",Tier.Nul);
+		fenetreNul = new Window (0,"fenetreNul",Tier.Nul);
 		
-		porteStandard = new Door (10,"porteStandard",Tier.Standard);
-		murStandard = new Wall (20,"murStandard",Tier.Standard);
-		toitTuile = new Roof (20,"toitTuile",Tier.Standard);
-		fenetreStandard = new Window (5,"fenetreStandard",Tier.Standard);
+		porteStandard = new Door (25,"porteStandard",Tier.Standard);
+		murStandard = new Wall (25,"murStandard",Tier.Standard);
+		toitTuile = new Roof (25,"toitTuile",Tier.Standard);
+		fenetreStandard = new Window (25,"fenetreStandard",Tier.Standard);
 		
-		porteBois = new Door (10,"porteBoisSolide",Tier.Bois);
-		murBois = new Wall (20,"murBoisSolide",Tier.Bois);
-		toitBois = new Roof (20,"toitBoisSolide",Tier.Bois);
-		fenetreBois = new Window (5, "fenetreBoisSolide",Tier.Bois);
+		porteBois = new Door (50,"porteBoisSolide",Tier.Bois);
+		murBois = new Wall (50,"murBoisSolide",Tier.Bois);
+		toitBois = new Roof (50,"toitBoisSolide",Tier.Bois);
+		fenetreBois = new Window (50, "fenetreBoisSolide",Tier.Bois);
 		
-		portePierre = new Door (10,"portePierre",Tier.Pierre);
-		murPierre = new Wall (20,"murPierre",Tier.Pierre);
-		toitPierre = new Roof (20,"toitPierre",Tier.Pierre);
-		fenetrePierre = new Window (5, "fenetrePierre",Tier.Pierre);
+		portePierre = new Door (125,"portePierre",Tier.Pierre);
+		murPierre = new Wall (125,"murPierre",Tier.Pierre);
+		toitPierre = new Roof (125,"toitPierre",Tier.Pierre);
+		fenetrePierre = new Window (125, "fenetrePierre",Tier.Pierre);
+		
+		
+		nextUpgrade[0] = porteStandard;
+		nextUpgrade[1] = murStandard;
+		nextUpgrade[2] = toitTuile;
+		nextUpgrade[3] = fenetreStandard;
 
 	}
 
@@ -90,6 +99,13 @@ public class Jeu extends BasicGameState {
 	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
 		
 		container.getHouse().render(g);
+		if(!vague)
+		{
+			for(int i = 0; i < 4; i++)
+			{
+				nextUpgrade[i].render(g);
+			}
+		}
 		
 		if(!vague)
 		{
@@ -101,6 +117,12 @@ public class Jeu extends BasicGameState {
 
 	@Override
 	public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException {
+		
+		
+		switch(container.getHouse().getComp(0).getTier())
+		{
+		
+		}
 		
 		if(pause) {
 			pause=false;

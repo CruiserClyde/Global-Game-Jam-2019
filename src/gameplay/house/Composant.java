@@ -5,17 +5,15 @@ import java.io.Serializable;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 
+import gameplay.interfaces.Rendering;
 import ressources.Ressources;
 
-public abstract class Composant implements Serializable
+public abstract class Composant implements Serializable, Rendering
 {
 	private static final long serialVersionUID = 13241936481135654L;
 	private int bonusPV;
-	private int bonusDef;
 	private int prix;
-	private Image texture;
-	
-	
+	protected Image texture;
 	private Tier tier;
 	
 	
@@ -38,10 +36,7 @@ public abstract class Composant implements Serializable
 		return prix;
 	}
 	
-	public int getBonusDef()
-	{
-		return bonusDef;
-	}
+
 	
 	public Tier getTier()
 	{

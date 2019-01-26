@@ -49,6 +49,27 @@ public class House implements Serializable, Rendering
 		regenRate = (int) (100*PV/PVMax);
 	}
 	
+	public void setWall(Wall wall)
+	{
+		comp[0] = wall;
+	}
+	public void setRoof(Wall roof)
+	{
+		comp[1] = roof;
+	}
+	public void setDoor(Wall door)
+	{
+		comp[2] = door;
+	}
+	public void setWindow(Wall window)
+	{
+		comp[3] = window;
+	}
+	
+	public Composant getComp(int i)
+	{
+		return comp[i];
+	}
 	public int getPV()
 	{
 		return PV;

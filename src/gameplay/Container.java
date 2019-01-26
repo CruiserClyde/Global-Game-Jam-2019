@@ -31,7 +31,7 @@ public final class Container implements Serializable {
 		entities = new Matrix<Entity>(Launcher.WIDTH/32, Launcher.HEIGHT/32);
 		weapons = new Matrix<Weapon>(Launcher.WIDTH/32, Launcher.HEIGHT/32);
 		//house init
-		//test
+		
 		porteNul = new Door (0,"porteNul",Tier.Nul);
 		murNul = new Wall (0,"murNul",Tier.Nul);
 		toitNul = new Roof (0,"toitNul",Tier.Nul);

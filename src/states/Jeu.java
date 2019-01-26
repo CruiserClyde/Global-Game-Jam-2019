@@ -90,11 +90,16 @@ public class Jeu extends BasicGameState {
 	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
 		
 		container.getHouse().render(g);
-		
 		if(!vague)
 		{
 		g.setColor(Color.gray);
-		g.fillRect(650, 0, 650, 800);
+		g.fillRect(600, 0, 600, 800);
+		g.setColor(Color.white);
+		g.fillRect(625, 20, 160 , 160);
+		g.fillRect(625, 200, 160 , 160);
+		g.fillRect(625, 380, 160 , 160);
+		g.fillRect(625, 560, 160 , 160);
+		g.drawString("Krédits :", 610, 750);
 		}
 		
 	}

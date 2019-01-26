@@ -64,7 +64,7 @@ public final class Ressources {
 		SPRITES.put("toitBoisSolide",new Image("ressources/pictures/toitBoisSolide.png"));
 		SPRITES.put("murBoisSolide",new Image("ressources/pictures/murBoisSolide.png"));
 		
-		SPRITES.put("zombie", new Image("ressources/pictures/BigZombie"));
+		SPRITES.put("zombie", new Image("ressources/pictures/BigZombie.png"));
 		SPRITES.put("portePierre",new Image("ressources/pictures/portePierre.png"));
 		SPRITES.put("fenetrePierre",new Image("ressources/pictures/fenetrePierre.png"));
 		SPRITES.put("toitPierre",new Image("ressources/pictures/toitPierre.png"));

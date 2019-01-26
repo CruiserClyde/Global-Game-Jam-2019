@@ -27,10 +27,12 @@ public class House implements Serializable
 		comp[2] = door;
 		comp[3] = window;
 		
+		def = 0;
 		PVMax = (int) (10*(tailleX+tailleY)); //détermination es PV de base en fonction de la taille
 		for(int i = 0; i < comp.length; i++) //bonus des composants
 		{
 			PVMax += comp[i].getBonusPV();
+			def += comp[i].getBonusDef();
 			fireResistance = comp[i].getFireResistance();
 			lightnigResistance = comp[i].getLightningResistance();
 			groundResistance = comp[i].getGroundResistance();
@@ -43,8 +45,6 @@ public class House implements Serializable
 		this.tailleX = tailleX;
 		this.tailleY = tailleY;
 		regenRate = (int) (100*PV/PVMax);
-		
-		def = 1;
 	}
 	
 	public int getPV()

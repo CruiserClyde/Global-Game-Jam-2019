@@ -7,6 +7,7 @@ import org.newdawn.slick.SlickException;
 
 public abstract class Composant implements Serializable
 {
+	private static final long serialVersionUID = 13241936481135654L;
 	private int bonusPV;
 	private int bonusDef;
 	private int prix;

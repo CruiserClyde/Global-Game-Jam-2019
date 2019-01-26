@@ -10,11 +10,4 @@ public class BigZombie extends Ennemies{
 		// TODO Auto-generated constructor stub
 	}
 
-	@Override
-	public void update(int delta) {
-		// TODO Auto-generated method stub
-		
-	}
-	
-
 }

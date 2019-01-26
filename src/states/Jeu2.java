@@ -29,7 +29,6 @@ public class Jeu2 extends BasicGameState {
 		choix=0;
 		pause=false;
 		debut_vague=false;
-
 	}
 
 	@Override

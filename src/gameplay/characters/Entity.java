@@ -31,7 +31,5 @@ public abstract class Entity implements Serializable, Rendering {
 	public void render(Graphics g) {
 		// TODO Auto-generated method stub
 		g.drawImage(Ressources.SPRITES.get(sprite), x, y);
-	}
-	
-	
+	}	
 }

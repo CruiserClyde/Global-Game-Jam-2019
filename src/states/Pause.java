@@ -24,25 +24,24 @@ public class Pause extends BasicGameState {
 
 	@Override
 	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
-	choix=0;
-	reprendre=false;
-	menu=false;
-	Save=false;
-	
+		choix = 0;
+		reprendre = false;
+		menu = false;
+		Save = false;
 	}
 
 	@Override
 	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
 		g.setColor(Color.white);
 		g.drawString("PAUSE",300,200);
-		if(choix==0) {
+		if(choix == 0) {
 			g.setColor(Color.red);
 			g.drawString("Reprendre",250,250);
 			g.setColor(Color.white);
 			g.drawString("Sauvegarder/Retour menu", 250, 270);
 			g.drawString("Menu Principal",250,290);
 		}
-		else if(choix==1) {
+		else if(choix == 1) {
 			g.setColor(Color.white);
 			g.drawString("Reprendre",250,250);
 			g.setColor(Color.red);
@@ -50,7 +49,7 @@ public class Pause extends BasicGameState {
 			g.setColor(Color.white);
 			g.drawString("Menu Principal",250,290);			
 		}
-		else if(choix==2) {
+		else if(choix == 2) {
 			g.setColor(Color.white);
 			g.drawString("Reprendre",250,250);
 			g.setColor(Color.white);
@@ -58,7 +57,6 @@ public class Pause extends BasicGameState {
 			g.setColor(Color.red);
 			g.drawString("Menu Principal",250,290);	
 		}
-
 	}
 
 	@Override

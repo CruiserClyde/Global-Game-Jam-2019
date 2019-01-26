@@ -37,30 +37,37 @@ public abstract class Composant implements Serializable
 	{
 		return bonusPV;
 	}
+	
 	public int getPrix()
 	{
 		return prix;
 	}
+	
 	public int getBonusDef()
 	{
 		return bonusDef;
 	}
+	
 	public float getFireResistance()
 	{
 		return fireResistance;
 	}
+	
 	public float getLightningResistance()
 	{
 		return lightnigResistance;
 	}
+	
 	public float getGroundResistance()
 	{
 		return groundResistance;
 	}
+	
 	public float getAcideResistance()
 	{
 		return acideResistance;
 	}
+	
 	public Image getTexture()
 	{
 		return texture;

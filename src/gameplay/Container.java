@@ -2,6 +2,7 @@ package gameplay;
 
 import java.io.Serializable;
 
+import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
 
 import gameplay.characters.Entity;
@@ -11,11 +12,12 @@ import gameplay.house.Roof;
 import gameplay.house.Tier;
 import gameplay.house.Wall;
 import gameplay.house.Window;
+import gameplay.interfaces.Rendering;
 import gameplay.weapons.Weapon;
 import main.Launcher;
 import pathfinderlib.basics.Matrix;
 
-public final class Container implements Serializable {
+public final class Container implements Serializable, Rendering {
 	private static final long serialVersionUID = -3167976635446965294L;
 	private Matrix<Entity> entities;
 	private Matrix<Weapon> weapons;
@@ -37,6 +39,37 @@ public final class Container implements Serializable {
 		toitNul = new Roof (0,"toitNul",Tier.Nul);
 		fenetreNul = new Window (0,"fenetreNul", Tier.Nul);
 		house = new House(10,10,murNul,toitNul,porteNul,fenetreNul);
+	}
+	
+	@Override
+	public void render(Graphics g) {
+		// TODO Auto-generated method stub
+		house.render(g);
+		for (int i=0;i<Launcher.WIDTH/32;i++) {
+			for (int k=0;k<Launcher.HEIGHT/32;k++) {
+				if (entities.get(i, k) != null) {
+					entities.get(i, k).render(g);
+				}
+				if (weapons.get(i, k) != null) {
+					weapons.get(i, k).render(g);
+				}
+			}
+		}
+	}
+
+	@Override
+	public void update(int delta) {
+		// TODO Auto-generated method stub
+		for (int i=0;i<Launcher.WIDTH/32;i++) {
+			for (int k=0;k<Launcher.HEIGHT/32;k++) {
+				if (entities.get(i, k) != null) {
+					entities.get(i, k).update(delta);
+				}
+				if (weapons.get(i, k) != null) {
+					weapons.get(i, k).update(delta);
+				}
+			}
+		}
 	}
 	
 	public void setEntity(int x, int y, Entity ent) {

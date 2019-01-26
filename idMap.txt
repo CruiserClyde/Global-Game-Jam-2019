@@ -1,0 +1,9 @@
+1 => herbe
+2 => herbe avec fleurs
+3 => vide
+4 => Chemin droit
+5 => Chemin coudé 
+6 => vide
+7 => gros caillou
+8 => petits cailloux
+9 => vide  

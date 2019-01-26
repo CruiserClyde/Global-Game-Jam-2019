@@ -29,7 +29,7 @@ public final class Ressources {
 		f.loadGlyphs();
 		FONTS.put("title", f);
 		
-		f = new UnicodeFont("ressources/fonts/shining.ttf", 14, false, false);
+		f = new UnicodeFont("ressources/fonts/shining.ttf", 32, false, false);
 		f.addAsciiGlyphs();
 		f.getEffects().add(a);
 		f.loadGlyphs();
@@ -64,6 +64,7 @@ public final class Ressources {
 		// Général
 		SPRITES.put("kredit",new Image("ressources/pictures/Kredit.png"));
 		SPRITES.put("placeHolder",new Image("ressources/pictures/placeHolder.png"));
+		SPRITES.put("banniere", new Image("ressources/pictures/bannieresansLogo.png"));
 		// Maison nulle
 		SPRITES.put("porteNul",new Image("ressources/pictures/homeNul/porteNul.png"));
 		SPRITES.put("fenetreNul",new Image("ressources/pictures/homeNul/fenetreNul.png"));

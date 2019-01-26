@@ -124,7 +124,7 @@ public class Jeu extends BasicGameState {
 		g.fillRect(625, 550, 160 , 160);
 		g.setColor(Color.black);
 		g.drawString("Krédits: "+ kredit, 610, 750);
-		if(kredit>=prixM) {
+		if(kredit>=prixM+kredit) {
 			achatM=true;
 			g.setColor(Color.white);
 			g.drawString("upgrade: "+prixM+" K", 625, 170);	

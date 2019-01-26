@@ -79,7 +79,7 @@ public class House implements Serializable
 	public void takeDamage(int damage)
 	{
 		
-		PV -= (damage)-def;
+		PV -= (int) ((damage*lightnigResistance*fireResistance*groundResistance*acideResistance)-def);
 		
 		regenRate = (int) (100*PV/PVMax);
 	}

@@ -10,6 +10,8 @@ import states.Pause;
 import states.TitleScreen;
 
 public class Launcher extends StateBasedGame {
+	public static final int WIDTH = 800;
+	public static final int HEIGHT = 800;
 
 	public Launcher(String name) {
 		super(name);
@@ -39,7 +41,7 @@ public class Launcher extends StateBasedGame {
 		AppGameContainer app;
 		try {
 			app = new AppGameContainer(new Launcher("Z'homebies"));
-			app.setDisplayMode(800, 600, false);
+			app.setDisplayMode(Launcher.WIDTH, Launcher.HEIGHT, false);
 			app.setShowFPS(false);
 			app.setFullscreen(false);
 			app.setIcon("ressources/pictures/icon.png");

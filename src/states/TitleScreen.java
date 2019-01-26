@@ -11,6 +11,8 @@ import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
+import ressources.Ressources;
+
 public class TitleScreen extends BasicGameState {
 
 	@Override
@@ -32,6 +34,11 @@ public class TitleScreen extends BasicGameState {
 		web = false;
 		quit = false;
 		choix = 0;
+		// TODO Auto-generated method stub
+		Ressources.initFonts();
+		Ressources.initMusic();
+		Ressources.initSounds();
+		Ressources.initSprite();
 	}
 
 	@Override

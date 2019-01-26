@@ -48,6 +48,17 @@ public final class Ressources {
 		// Sprite inits
 		SPRITES.put("kredit",new Image("ressources/pictures/Kredit.png"));
 		SPRITES.put("placeHolder",new Image("ressources/pictures/placeHolder.png"));
+		
+		SPRITES.put("porteStandard",new Image("ressources/pictures/porteStandard.png"));
+		SPRITES.put("fenetreStandard",new Image("ressources/pictures/fenetreStandard.png"));
+		SPRITES.put("toitTuile",new Image("ressources/pictures/toitTuile.png"));
+		SPRITES.put("murStandard",new Image("ressources/pictures/murStandard.png"));
+		
+		SPRITES.put("porteBoisSolide",new Image("ressources/pictures/porteBoisSolide.png"));
+		SPRITES.put("fenetreBoisSolide",new Image("ressources/pictures/fenetreBoisSolide.png"));
+		SPRITES.put("toitBoisSolide",new Image("ressources/pictures/toitBoisSolide.png"));
+		SPRITES.put("murBoisSolide",new Image("ressources/pictures/murBoisSolide.png"));
+		
 	}
 	
 	public static void initAnimation() throws SlickException {

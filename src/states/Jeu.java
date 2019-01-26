@@ -25,7 +25,6 @@ public class Jeu extends BasicGameState {
 		return 1;
 	}
 	
-	private Image maison;
 	private int choix;
 	private boolean pause,fin_vague;
 	private Container container;
@@ -35,7 +34,6 @@ public class Jeu extends BasicGameState {
 
 	@Override
 	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
-		maison=new Image("ressources/pictures/logo.png");
 		container = new Container(); 
 		choix=0;
 		pause=false;
@@ -44,7 +42,6 @@ public class Jeu extends BasicGameState {
 
 	@Override
 	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
-		maison.draw(250,150);
 		container.getHouse().render(g);
 		
 	}

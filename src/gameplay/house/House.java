@@ -23,13 +23,16 @@ public class House implements Serializable, Rendering
 	private float groundResistance;
 	private float acideResistance;
 	
-	public House(int posX, int posY, int tailleX, int tailleY, Wall wall, Roof roof, Door door, Window window)
+	public House(int posX, int posY, Wall wall, Roof roof, Door door, Window window)
 	{
 		comp = new Composant[4];
 		comp[0] = wall;
 		comp[1] = roof;
 		comp[2] = door;
 		comp[3] = window;
+		
+		this.tailleX = 5;
+		this.tailleY = 5;
 		
 		def = 0;
 		PVMax = (int) (10*(tailleX+tailleY)); //détermination es PV de base en fonction de la taille
@@ -46,8 +49,6 @@ public class House implements Serializable, Rendering
 		
 		positionX = posX;
 		positionY = posY;
-		this.tailleX = tailleX;
-		this.tailleY = tailleY;
 		regenRate = (int) (100*PV/PVMax);
 	}
 	
@@ -105,10 +106,10 @@ public class House implements Serializable, Rendering
 	@Override
 	public void render(Graphics g) 
 	{
-		g.drawImage(comp[0].getTexture(), positionX*32, positionY*32, (positionX+tailleX)*32, (positionY+tailleY)*32, 0, 0, 31, 31); //affiche le mur
-		g.drawImage(comp[1].getTexture(), positionX*32, positionY*32, (positionX+tailleX)*32, (positionY+tailleY)*32, 0, 0, 31, 31); //affiche le toit
-		g.drawImage(comp[2].getTexture(), positionX*32, positionY*32, (positionX+tailleX)*32, (positionY+tailleY)*32, 0, 0, 31, 31); //affiche la porte
-		g.drawImage(comp[3].getTexture(), positionX*32, positionY*32, (positionX+tailleX)*32, (positionY+tailleY)*32, 0, 0, 31, 31); //affiche la fenetre
+		g.drawImage(comp[0].getTexture(), positionX*32, positionY*32, (positionX+tailleX)*32, (positionY+tailleY)*32, 0, 0, 159, 159); //affiche le mur
+		g.drawImage(comp[1].getTexture(), positionX*32, positionY*32, (positionX+tailleX)*32, (positionY+tailleY)*32, 0, 0, 159, 159); //affiche le toit
+		g.drawImage(comp[2].getTexture(), positionX*32, positionY*32, (positionX+tailleX)*32, (positionY+tailleY)*32, 0, 0, 159, 159); //affiche la porte
+		g.drawImage(comp[3].getTexture(), positionX*32, positionY*32, (positionX+tailleX)*32, (positionY+tailleY)*32, 0, 0, 159, 159); //affiche la fenetre
 	}
 
 	@Override

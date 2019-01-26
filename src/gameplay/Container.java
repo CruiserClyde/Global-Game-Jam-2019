@@ -31,11 +31,11 @@ public final class Container implements Serializable {
 		weapons = new Matrix<Weapon>(Launcher.WIDTH/32, Launcher.HEIGHT/32);
 		//house init
 		//test
-		porteNul = new Door (100, 0, 0, 2,(float) 0.5, 1, 1,"placeHolder");
-		murNul = new Wall (100, 0, 0, 2,(float) 0.5, 1, 1,"placeHolder");
-		toitNul = new Roof (100, 0, 0, 2,(float) 0.5, 1, 1,"placeHolder");
-		fenetreNul = new Window (100, 0, 0, 2,(float) 0.5, 1, 1,"placeHolder");
-		house = new House(5,5,2,2,murNul,toitNul,porteNul,fenetreNul);
+		porteNul = new Door (100, 0, 0, 2,(float) 0.5, 1, 1,"porteStandard");
+		murNul = new Wall (100, 0, 0, 2,(float) 0.5, 1, 1,"murStandard");
+		toitNul = new Roof (100, 0, 0, 2,(float) 0.5, 1, 1,"toitTuile");
+		fenetreNul = new Window (100, 0, 0, 2,(float) 0.5, 1, 1,"fenetreStandard");
+		house = new House(10,10,murNul,toitNul,porteNul,fenetreNul);
 	}
 	
 	public void setEntity(int x, int y, Entity ent) {

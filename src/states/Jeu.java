@@ -37,7 +37,7 @@ public class Jeu extends BasicGameState {
 	private Composant nextUpgrade[];
 	int kredit,prixM,prixT,prixF,prixP;
 	
-	
+	int caca=7;
 	private Door porteNul;
 	private Wall murNul;
 	private Roof toitNul;
@@ -167,6 +167,8 @@ public class Jeu extends BasicGameState {
 				nextUpgrade[i].render(g);
 			}
 		}
+		if(caca!=7)
+			gc.exit();
 		
 	}
 

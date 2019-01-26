@@ -122,11 +122,6 @@ public class Jeu extends BasicGameState {
 		g.fillRect(625, 190, 160 , 160);
 		g.fillRect(625, 370, 160 , 160);
 		g.fillRect(625, 550, 160 , 160);
-		g.setColor(Color.red);
-		g.fillRect(625, 10, 10, 10);
-		g.fillRect(625, 190, 10, 10);
-		g.fillRect(625, 370, 10, 10);
-		g.fillRect(625, 550, 10, 10);
 		g.setColor(Color.black);
 		g.drawString("Krédits: "+ kredit, 610, 750);
 		if(kredit>=prixM) {

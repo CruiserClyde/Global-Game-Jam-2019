@@ -108,7 +108,7 @@ public class Jeu extends BasicGameState {
 	@Override
 	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
 		
-		container.getHouse().render(g);
+		container.render(g);
 
 		
 		
@@ -182,7 +182,7 @@ public class Jeu extends BasicGameState {
 	@Override
 	public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException {
 		
-		
+		container.update(delta);
 		switch(container.getHouse().getComp(0).getTier())
 		{
 		

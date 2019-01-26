@@ -64,18 +64,18 @@ public class Jeu extends BasicGameState {
 	@Override
 	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
 		container = new Container(); 
-		pause=false;
-		vague=false;
+		pause = false;
+		vague = false;
 		nextUpgrade = new Composant[4];
-		kredit=0;
-		prixM=25;
-		prixT=25;
-		prixF=25;
-		prixP=25;
-		achatM=false;
-		achatP=false;
-		achatF=false;
-		achatT=false;
+		kredit = 0;
+		prixM = 25;
+		prixT = 25;
+		prixF = 25;
+		prixP = 25;
+		achatM = false;
+		achatP = false;
+		achatF = false;
+		achatT = false;
 		
 		porteNul = new Door (0,"porteNul",Tier.Nul);
 		murNul = new Wall (0,"murNul",Tier.Nul);
@@ -191,13 +191,13 @@ public class Jeu extends BasicGameState {
 	@Override
 	public void keyPressed(int key, char c) {
 		super.keyPressed(key, c);
-		if(key==Input.KEY_ESCAPE)
+		if(key == Input.KEY_ESCAPE)
 			pause=true;
-		if(key==Input.KEY_A)
+		if(key == Input.KEY_A)
 			{
 				vague = !vague;
 			}
-		if(key==Input.KEY_K)
+		if(key == Input.KEY_K)
 			kredit=kredit+100;
 	}
 	

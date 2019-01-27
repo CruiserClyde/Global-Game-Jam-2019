@@ -43,6 +43,7 @@ public class Jeu extends BasicGameState {
 	
 	private Sound upgrade;
 	private Sound finalUpgrade;
+	private Sound takeDamage;
 	
 	private boolean pause,vague,achatM,achatP,achatT,achatF;
 	private boolean maxM,maxT,maxP,maxF;
@@ -108,6 +109,7 @@ public class Jeu extends BasicGameState {
 		
 		upgrade = Ressources.SOUNDS.get("upgrade");
 		finalUpgrade = Ressources.SOUNDS.get("upgrade_final");
+		takeDamage = Ressources.SOUNDS.get("boum");
 		
 		porteNul = new Door (0,"porteNul",Tier.Nul);
 		murNul = new Wall (0,"murNul",Tier.Nul);
@@ -145,14 +147,18 @@ public class Jeu extends BasicGameState {
 		nextUpgrade[3] = fenetreStandard;
 		
 		NormalZombie zb = new NormalZombie(sbg);
-		container.setEntity(zb.getX(), zb.getY(), zb);
+		container.setEntity(0, 0, zb);
 	}
 
 	@Override
 	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {		
 		container.render(g);
+		g.setColor(Color.red);
+		g.fillRect(10*32, 9*32, (5*32)*(((float)container.getHouse().getPV())/((float)container.getHouse().getPVMax())),24);
+		g.setColor(Color.black);
+		g.drawString("PV: "+container.getHouse().getPV(),10*32+3, 9*32+5);
+		g.drawRect(10*32, 9*32, 5*32, 24);
 		
-
 		if(!vague)
 		{
 			g.setColor(Color.gray);
@@ -234,7 +240,11 @@ public class Jeu extends BasicGameState {
 		container.update(delta);
 		if(!pause && vague)
 		{
-			
+			if(container.getEntities().get(0, 0).getX() == container.getHouse().getPositionX()+(container.getHouse().getTailleX()/2) && container.getEntities().get(0, 0).getY() == container.getHouse().getPositionY()+(container.getHouse().getTailleY()-1))
+			{
+				container.getHouse().takeDamage(container.getEntities().get(0, 0).getDamage(), 5);
+				takeDamage.play();
+			}
 		}
 		
 		

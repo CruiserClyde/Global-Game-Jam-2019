@@ -86,14 +86,13 @@ public final class Ressources {
 		SPRITES.put("toitPierre",new Image("ressources/pictures/homeRock/toitPierre.png"));
 		SPRITES.put("murPierre",new Image("ressources/pictures/homeRock/murPierre.png"));
 		// Ennemies
-		SPRITES.put("zombie", new Image("ressources/pictures/charactersEnnemies/BigZombie.png"));
-		// Tiles
-		SPRITES.put("grass", new Image("ressources/pictures/Sprites/grass.png"));
-		SPRITES.put("grassFlowers", new Image("ressources/pictures/Sprites/grassFlowers.png"));
-		SPRITES.put("pathNormal", new Image("ressources/pictures/Sprites/pathNormal.png"));
-		SPRITES.put("pathAngled", new Image("ressources/pictures/Sprites/pathAngled.png"));
-		SPRITES.put("bigRock", new Image("ressources/pictures/Sprites/bigRock.png"));
-		SPRITES.put("smallRocks", new Image("ressources/pictures/Sprites/smallRocks.png"));
+		SPRITES.put("zombie1", new Image("ressources/pictures/charactersEnnemies/BigZombie.png"));
+		SPRITES.put("zombie2", new Image("ressources/pictures/charactersEnnemies/cowZombie.png"));
+		SPRITES.put("zombie3", new Image("ressources/pictures/charactersEnnemies/normalZombie.png"));
+		// Allies
+		SPRITES.put("allier1", new Image("ressources/pictures/charactersAllies/Banquier.png"));
+		SPRITES.put("allier2", new Image("ressources/pictures/charactersAllies/Plombier.png"));
+		
 	}
 	
 	public static void initAnimation() throws SlickException {

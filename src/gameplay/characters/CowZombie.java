@@ -6,6 +6,7 @@ import java.util.Vector;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.state.StateBasedGame;
 
 import pathfinderlib.basics.Matrix;
 import pathfinderlib.basics.Moves;
@@ -27,8 +28,8 @@ public class CowZombie extends Ennemies {
 	private Point depart = new Point(x,y);
 	public Vector<Moves> pathfind = calculatePathToHouse(depart);
 
-	*/public CowZombie() {
-		super(0, 0, 0, 0, 0, "", null);
+	*/public CowZombie(StateBasedGame sbg) {
+		super((int)Math.random()*24, (int)Math.random()*24, 100, 10, 10, "zombie2", sbg);
 	}/*
 	public  void load() throws SlickException{
 		cowZombie = new Image(sprite);

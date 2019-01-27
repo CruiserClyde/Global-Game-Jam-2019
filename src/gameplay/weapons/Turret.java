@@ -12,7 +12,7 @@ public class Turret extends Weapon {
 	private int timer;
 
 	public Turret(int x, int y, String sprite, Container cnt) {
-		super(x, y, 100, 0, 1, 20, "placeHolder", cnt);
+		super(x, y, 100, 0, 1, 20, "turret1", cnt);
 		// TODO Auto-generated constructor stub
 	}
 

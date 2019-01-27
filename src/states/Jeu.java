@@ -45,6 +45,7 @@ public class Jeu extends BasicGameState {
 	private Sound finalUpgrade;
 	private Sound takeDamage;
 	private Sound gameOver;
+	private Sound ZmbiDegat;
 	
 	private boolean pause,vague,achatM,achatP,achatT,achatF;
 	private boolean maxM,maxT,maxP,maxF;
@@ -85,7 +86,6 @@ public class Jeu extends BasicGameState {
 	private int temps;
 	
 	
-	
 	boolean quit;
 	public Jeu() {	
 	}
@@ -114,6 +114,7 @@ public class Jeu extends BasicGameState {
 		finalUpgrade = Ressources.SOUNDS.get("upgrade_final");
 		takeDamage = Ressources.SOUNDS.get("boum");
 		gameOver = Ressources.SOUNDS.get("elec");
+		ZmbiDegat=Ressources.SOUNDS.get("damage");
 		
 		porteNul = new Door (0,"porteNul",Tier.Nul);
 		murNul = new Wall (0,"murNul",Tier.Nul);
@@ -163,7 +164,6 @@ public class Jeu extends BasicGameState {
 		g.setColor(Color.black);
 		g.drawString("PV: "+container.getHouse().getPV(),10*32+3, 9*32+5);
 		g.drawRect(10*32, 9*32, 5*32, 24);
-		
 		if(!vague)
 		{
 			g.setColor(Color.gray);
@@ -243,6 +243,9 @@ public class Jeu extends BasicGameState {
 	{
 		temps++;
 		container.update(delta);
+		if(container.getEntities().get(0, 0).getHP()<=0) {
+			container.setEntity(0,0,new NormalZombie(sbg));
+		}
 		if(!pause && temps%60 == 0)
 		{
 			if(container.getEntities().get(0, 0).getX() == container.getHouse().getPositionX()+(container.getHouse().getTailleX()/2) && container.getEntities().get(0, 0).getY() == container.getHouse().getPositionY()+(container.getHouse().getTailleY()-1))
@@ -310,6 +313,13 @@ public class Jeu extends BasicGameState {
 	}
 	
 	public void mousePressed(int button, int x, int y) {
+		
+		if(button==Input.MOUSE_LEFT_BUTTON && x>=container.getEntities().get(0, 0).getX()*32 && x<=container.getEntities().get(0, 0).getX()*32+32 && y>=container.getEntities().get(0, 0).getY()*32 && y<=container.getEntities().get(0, 0).getY()*32+32){
+			container.getEntities().get(0, 0).getHurt(10);
+			ZmbiDegat.play();
+			kredit+=10;
+		}
+		
 		if(button==Input.MOUSE_LEFT_BUTTON && achatM && x>=625 && x<=785 && y>=10 && y<=170 && !vague)
 		{
 			kredit=kredit-nextUpgrade[0].getPrix();

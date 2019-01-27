@@ -10,6 +10,7 @@ import org.newdawn.slick.state.StateBasedGame;
 
 import pathfinderlib.basics.Matrix;
 import pathfinderlib.basics.Moves;
+import states.Jeu;
 
 public class NormalZombie extends Ennemies{
 	private static final long serialVersionUID = 1480552482164050522L;
@@ -29,8 +30,8 @@ public class NormalZombie extends Ennemies{
 	private Vector<Moves> pathfind = calculatePathToHouse(depart);
 	private */
 
-	public NormalZombie(StateBasedGame sbg) {
-		super((int)(Math.random()*24), (int)(Math.random()*24), 50, 0, 2, "zombie3", sbg);
+	public NormalZombie(StateBasedGame jeu) {
+		super((int)(Math.random()*24), (int)(Math.random()*24), 50, 0, 2, "zombie3", jeu);
 	}/*
 	public  void load() throws SlickException{
 		normalZombie = new Image(sprite);

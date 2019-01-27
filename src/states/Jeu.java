@@ -134,7 +134,8 @@ public class Jeu extends BasicGameState {
 		nextUpgrade[2] = porteStandard;
 		nextUpgrade[3] = fenetreStandard;
 		
-		container.setEntity(0, 0,  new NormalZombie(sbg));
+		NormalZombie zb = new NormalZombie(sbg);
+		container.setEntity(zb.getX(), zb.getY(), zb);
 	}
 
 	@Override
@@ -260,8 +261,8 @@ public class Jeu extends BasicGameState {
 	
 	public Vector<Moves> calculatePathToHouse(Point start) throws PathfindingException {
 		Matrix<State> laby = new Matrix<State>(Launcher.WIDTH, Launcher.HEIGHT);
-		for (int i=0;i<Launcher.WIDTH;i++) {
-			for (int k=0;k<Launcher.HEIGHT;k++) {
+		for (int i=0;i<Launcher.WIDTH/32;i++) {
+			for (int k=0;k<Launcher.HEIGHT/32;k++) {
 				if (container.getEntities().get(i, k) != null || container.getWeapons().get(i, k) != null) {
 					laby.set(i, k, State.Obstacle);
 				} else {

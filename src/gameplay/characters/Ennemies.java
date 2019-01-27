@@ -21,12 +21,14 @@ public abstract class Ennemies  extends Entity {
 		// TODO Auto-generated constructor stub
 		nextmove = null;
 		timer = 0;
+		this.sbg = sbg;
 	}
 
 	@Override
 	public void update(int delta) {
 		// TODO Auto-generated method stub
 		System.out.println("X: "+x +" Y: "+y);
+		System.out.println((Jeu)sbg.getState(1));
 		
 		try {
 			Vector<Moves> path = ((Jeu)sbg.getState(1)).calculatePathToHouse(new Point(x, y));

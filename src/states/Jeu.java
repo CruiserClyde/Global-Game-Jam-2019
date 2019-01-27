@@ -80,7 +80,7 @@ public class Jeu extends BasicGameState {
 	private Roof toitFutur;
 	private Window fenetreFutur;
 	
-	private NormalZombie nz1;
+	
 	
 	boolean quit;
 	public Jeu() {	
@@ -145,13 +145,13 @@ public class Jeu extends BasicGameState {
 		nextUpgrade[2] = porteStandard;
 		nextUpgrade[3] = fenetreStandard;
 		
-		nz1 = new NormalZombie(sbg);
+		container.setEntity(0, 0,  new NormalZombie(sbg));
 	}
 
 	@Override
 	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {		
 		container.render(g);
-		nz1.render(g);
+		
 
 		if(!vague)
 		{
@@ -235,7 +235,7 @@ public class Jeu extends BasicGameState {
 		container.update(delta);
 		if(!pause && vague)
 		{
-			nz1.update(delta);
+			
 		}
 		
 		
@@ -281,6 +281,7 @@ public class Jeu extends BasicGameState {
 				}
 			}
 		}
+		System.out.println(container.getHouse().getPositionX()+(container.getHouse().getTailleX()/2)+" - "+container.getHouse().getPositionY()+(container.getHouse().getTailleY()/2));
 		PathFinder pf = new PathFinder(laby, start, new Point(container.getHouse().getPositionX()+(container.getHouse().getTailleX()/2), container.getHouse().getPositionY()+(container.getHouse().getTailleY()/2)));
 		return pf.searchPath();
 	}

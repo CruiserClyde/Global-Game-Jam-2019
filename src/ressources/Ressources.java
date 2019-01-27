@@ -85,6 +85,11 @@ public final class Ressources {
 		SPRITES.put("fenetrePierre",new Image("ressources/pictures/homeRock/fenetrePierre.png"));
 		SPRITES.put("toitPierre",new Image("ressources/pictures/homeRock/toitPierre.png"));
 		SPRITES.put("murPierre",new Image("ressources/pictures/homeRock/murPierre.png"));
+		// Maison du futur
+		SPRITES.put("porteFutur",new Image("ressources/pictures/homeFutur/porteFutur.png"));
+		SPRITES.put("fenetreFutur",new Image("ressources/pictures/homeFutur/fenetreFutur.png"));
+		SPRITES.put("toitFutur",new Image("ressources/pictures/homeFutur/toitFutur.png"));
+		SPRITES.put("murFutur",new Image("ressources/pictures/homeFutur/murFutur.png"));
 		// Ennemies
 		SPRITES.put("zombie", new Image("ressources/pictures/charactersEnnemies/BigZombie.png"));
 		// Tiles

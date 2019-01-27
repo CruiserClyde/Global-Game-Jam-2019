@@ -47,7 +47,7 @@ public class Launcher extends StateBasedGame {
 			app.setIcon("ressources/pictures/icon.png");
 			app.setMusicOn(true);
 			app.setSoundOn(true);
-			app.setMusicVolume(1);
+			app.setMusicVolume((float) 0.8);
 			app.setSoundVolume(1);
 			app.setTargetFrameRate(60);
 			app.start();

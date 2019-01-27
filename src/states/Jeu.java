@@ -8,6 +8,7 @@ import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.Sound;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
@@ -24,6 +25,7 @@ import pathfinderlib.basics.Moves;
 import pathfinderlib.basics.State;
 import pathfinderlib.exceptions.PathfindingException;
 import pathfinderlib.pathfinder.PathFinder;
+import ressources.Ressources;
 
 public class Jeu extends BasicGameState {	
 	
@@ -31,8 +33,11 @@ public class Jeu extends BasicGameState {
 	public int getID() {
 		return 1;
 	}
+	private Sound upgrade;
+	private Sound finalUpgrade;
 	
 	private boolean pause,vague,achatM,achatP,achatT,achatF;
+	private boolean maxM,maxT,maxP,maxF;
 	private Container container;
 	private Composant nextUpgrade[];
 	private int kredit;
@@ -82,6 +87,13 @@ public class Jeu extends BasicGameState {
 		achatP = false;
 		achatF = false;
 		achatT = false;
+		maxM = false;
+		maxT = false;
+		maxF = false;
+		maxP = false;
+		
+		upgrade = Ressources.SOUNDS.get("upgrade");
+		finalUpgrade = Ressources.SOUNDS.get("upgrade_final");
 		
 		porteNul = new Door (0,"porteNul",Tier.Nul);
 		murNul = new Wall (0,"murNul",Tier.Nul);
@@ -103,15 +115,15 @@ public class Jeu extends BasicGameState {
 		toitPierre = new Roof (125,"toitPierre",Tier.Pierre);
 		fenetrePierre = new Window (125, "fenetrePierre",Tier.Pierre);
 		
-		porteMetal = new Door (125,"porteMetal",Tier.Acier);
-		murMetal = new Wall (125,"murMetal",Tier.Acier);
-		toitMetal = new Roof (125,"toitMetal",Tier.Acier);
-		fenetreMetal = new Window (125, "fenetreMetal",Tier.Acier);
+		porteMetal = new Door (500,"porteMetal",Tier.Acier);
+		murMetal = new Wall (500,"murMetal",Tier.Acier);
+		toitMetal = new Roof (500,"toitMetal",Tier.Acier);
+		fenetreMetal = new Window (500, "fenetreMetal",Tier.Acier);
 		
-		porteFutur = new Door (125,"porteFutur",Tier.Futuriste);
-		murFutur = new Wall (125,"murFutur",Tier.Futuriste);
-		toitFutur = new Roof (125,"toitFutur",Tier.Futuriste);
-		fenetreFutur = new Window (125, "fenetreFutur",Tier.Futuriste);
+		porteFutur = new Door (2500,"porteFutur",Tier.Futuriste);
+		murFutur = new Wall (2500,"murFutur",Tier.Futuriste);
+		toitFutur = new Roof (2500,"toitFutur",Tier.Futuriste);
+		fenetreFutur = new Window (2500, "fenetreFutur",Tier.Futuriste);
 		
 		nextUpgrade[0] = murStandard;
 		nextUpgrade[1] = toitTuile;
@@ -135,7 +147,7 @@ public class Jeu extends BasicGameState {
 			g.setColor(Color.black);
 			g.drawString("Krédits: "+ kredit, 610, 750);
 			
-			if(kredit >= nextUpgrade[0].getPrix()) 
+			if(kredit >= nextUpgrade[0].getPrix() && !maxM) 
 			{
 				achatM=true;
 				g.setColor(Color.white);
@@ -148,7 +160,7 @@ public class Jeu extends BasicGameState {
 				g.drawString("upgrade: "+nextUpgrade[0].getPrix()+" K", 625, 170);	
 			}
 			
-			if(kredit>=nextUpgrade[1].getPrix()) 
+			if(kredit>=nextUpgrade[1].getPrix() && !maxT) 
 			{
 				achatT=true;
 				g.setColor(Color.white);
@@ -161,7 +173,7 @@ public class Jeu extends BasicGameState {
 				g.drawString("upgrade: "+nextUpgrade[1].getPrix()+" K", 625, 350);	
 			}
 			
-			if(kredit>=nextUpgrade[2].getPrix()) 
+			if(kredit>=nextUpgrade[2].getPrix() && !maxP) 
 			{
 				achatP=true;
 				g.setColor(Color.white);
@@ -174,7 +186,7 @@ public class Jeu extends BasicGameState {
 				g.drawString("upgrade: "+nextUpgrade[2].getPrix()+" K", 625, 530);	
 			}
 			
-			if(kredit>=nextUpgrade[3].getPrix()) 
+			if(kredit>=nextUpgrade[3].getPrix() && !maxF) 
 			{
 				achatF=true;
 				g.setColor(Color.white);
@@ -222,7 +234,7 @@ public class Jeu extends BasicGameState {
 				vague = !vague;
 			}
 		if(key == Input.KEY_K)
-			kredit=kredit+100;
+			kredit=kredit+10000;
 	}
 	
 	public void save() {
@@ -249,24 +261,137 @@ public class Jeu extends BasicGameState {
 	}
 	
 	public void mousePressed(int button, int x, int y) {
-		if(button==Input.MOUSE_LEFT_BUTTON && achatM && x>=625 && x<=785 && y>=10 && y<=170)
+		if(button==Input.MOUSE_LEFT_BUTTON && achatM && x>=625 && x<=785 && y>=10 && y<=170 && !vague)
 		{
 			kredit=kredit-nextUpgrade[0].getPrix();
+			container.getHouse().setWall((Wall) nextUpgrade[0]);
+			
+			if(nextUpgrade[0].getTier() == Tier.Standard)
+			{
+				nextUpgrade[0] = murBois;
+				upgrade.play();
+				
+			}
+			else if(nextUpgrade[0].getTier() == Tier.Bois)
+			{
+				nextUpgrade[0] = murPierre;
+				upgrade.play();
+			}
+			else if(nextUpgrade[0].getTier() == Tier.Pierre)
+			{
+				nextUpgrade[0] = murMetal;
+				upgrade.play();
+			}
+			else if(nextUpgrade[0].getTier() == Tier.Acier)
+			{
+				nextUpgrade[0] = murFutur;
+				upgrade.play();
+			}
+			else if(nextUpgrade[0].getTier() == Tier.Futuriste)
+			{
+				maxM=true;
+				finalUpgrade.play();
+			}
+			
 		}
 		
-		if(button==Input.MOUSE_LEFT_BUTTON && achatT && x>=625 && x<=785 && y>=190 && y<=350) 
+		if(button==Input.MOUSE_LEFT_BUTTON && achatT && x>=625 && x<=785 && y>=190 && y<=350 && !vague) 
 		{
 			kredit=kredit-nextUpgrade[1].getPrix();
+			container.getHouse().setRoof((Roof) nextUpgrade[1]);
+			
+			if(nextUpgrade[1].getTier() == Tier.Standard)
+			{
+				nextUpgrade[1] = toitBois;
+				upgrade.play();
+				
+			}
+			else if(nextUpgrade[1].getTier() == Tier.Bois)
+			{
+				nextUpgrade[1] = toitPierre;
+				upgrade.play();
+			}
+			else if(nextUpgrade[1].getTier() == Tier.Pierre)
+			{
+				nextUpgrade[1] = toitMetal;
+				upgrade.play();
+			}
+			else if(nextUpgrade[1].getTier() == Tier.Acier)
+			{
+				nextUpgrade[1] = toitFutur;
+				upgrade.play();
+			}
+			else if(nextUpgrade[1].getTier() == Tier.Futuriste)
+			{
+				maxT=true;
+				finalUpgrade.play();
+			}
 		}
 		
-		if (button==Input.MOUSE_LEFT_BUTTON && achatP && x>=625 && x<=785 && y>=370 && y<=530)
+		if (button==Input.MOUSE_LEFT_BUTTON && achatP && x>=625 && x<=785 && y>=370 && y<=530 && !vague)
 		{
 			kredit=kredit-nextUpgrade[2].getPrix();
+			container.getHouse().setDoor((Door) nextUpgrade[2]);
+			
+			if(nextUpgrade[2].getTier() == Tier.Standard)
+			{
+				nextUpgrade[2] = porteBois;
+				upgrade.play();
+			}
+			else if(nextUpgrade[2].getTier() == Tier.Bois)
+			{
+				nextUpgrade[2] = portePierre;
+				upgrade.play();
+			}
+			else if(nextUpgrade[2].getTier() == Tier.Pierre)
+			{
+				nextUpgrade[2] = porteMetal;
+				upgrade.play();
+			}
+			else if(nextUpgrade[2].getTier() == Tier.Acier)
+			{
+				nextUpgrade[2] = porteFutur;
+				upgrade.play();
+			}
+			else if(nextUpgrade[2].getTier() == Tier.Futuriste)
+			{
+				maxP=true;
+				finalUpgrade.play();
+			}
 		}
 		
-		if(button==Input.MOUSE_LEFT_BUTTON && achatF && x>=625 && x<=785 && y>=550 && y<=710)
+		if(button==Input.MOUSE_LEFT_BUTTON && achatF && x>=625 && x<=785 && y>=550 && y<=710 && !vague)
 		{
 			kredit=kredit-nextUpgrade[3].getPrix();
+			container.getHouse().setWindow((Window) nextUpgrade[3]);
+			
+			if(nextUpgrade[3].getTier() == Tier.Standard)
+			{
+				nextUpgrade[3] = fenetreBois;
+				upgrade.play();
+			}
+			else if(nextUpgrade[3].getTier() == Tier.Bois)
+			{
+				nextUpgrade[3] = fenetrePierre;
+				upgrade.play();
+			}
+			else if(nextUpgrade[3].getTier() == Tier.Pierre)
+			{
+				nextUpgrade[3] = fenetreMetal;
+				upgrade.play();
+			}
+			else if(nextUpgrade[3].getTier() == Tier.Acier)
+			{
+				nextUpgrade[3] = fenetreFutur;
+				upgrade.play();
+				
+			}
+			else if(nextUpgrade[3].getTier() == Tier.Futuriste)
+			{
+				maxF=true;
+				finalUpgrade.play();
+				
+			}
 		}
 	}
 	

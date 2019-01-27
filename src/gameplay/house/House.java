@@ -49,21 +49,40 @@ public class House implements Serializable, Rendering
 		regenRate = (int) (100*PV/PVMax);
 	}
 	
+	public void updateStat()
+	{
+		PVMax = 0;
+		for(int i = 0; i < comp.length; i++) //bonus des composants
+		{
+			PVMax += comp[i].getBonusPV();
+			fireResistance = comp[i].getTier().getFireResistance();
+			lightnigResistance = comp[i].getTier().getLightningResistance();
+			groundResistance = comp[i].getTier().getGroundResistance();
+			acideResistance = comp[i].getTier().getAcideResistance();
+		}
+		PV = PVMax;
+		regenRate = (int) (100*PV/PVMax);
+	}
 	public void setWall(Wall wall)
 	{
 		comp[0] = wall;
+		updateStat();
+		
 	}
-	public void setRoof(Wall roof)
+	public void setRoof(Roof roof)
 	{
 		comp[1] = roof;
+		updateStat();
 	}
-	public void setDoor(Wall door)
+	public void setDoor(Door door)
 	{
 		comp[2] = door;
+		updateStat();
 	}
-	public void setWindow(Wall window)
+	public void setWindow(Window window)
 	{
 		comp[3] = window;
+		updateStat();
 	}
 	
 	public Composant getComp(int i)

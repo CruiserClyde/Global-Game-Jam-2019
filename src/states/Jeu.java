@@ -44,6 +44,7 @@ public class Jeu extends BasicGameState {
 	private Sound upgrade;
 	private Sound finalUpgrade;
 	private Sound takeDamage;
+	private Sound gameOver;
 	
 	private boolean pause,vague,achatM,achatP,achatT,achatF;
 	private boolean maxM,maxT,maxP,maxF;
@@ -81,6 +82,8 @@ public class Jeu extends BasicGameState {
 	private Roof toitFutur;
 	private Window fenetreFutur;
 	
+	private int temps;
+	
 	
 	
 	boolean quit;
@@ -110,6 +113,7 @@ public class Jeu extends BasicGameState {
 		upgrade = Ressources.SOUNDS.get("upgrade");
 		finalUpgrade = Ressources.SOUNDS.get("upgrade_final");
 		takeDamage = Ressources.SOUNDS.get("boum");
+		gameOver = Ressources.SOUNDS.get("elec");
 		
 		porteNul = new Door (0,"porteNul",Tier.Nul);
 		murNul = new Wall (0,"murNul",Tier.Nul);
@@ -148,6 +152,7 @@ public class Jeu extends BasicGameState {
 		
 		NormalZombie zb = new NormalZombie(sbg);
 		container.setEntity(0, 0, zb);
+		temps = 0;
 	}
 
 	@Override
@@ -236,15 +241,20 @@ public class Jeu extends BasicGameState {
 	@Override
 	public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException 
 	{
-		
+		temps++;
 		container.update(delta);
-		if(!pause && vague)
+		if(!pause && temps%60 == 0)
 		{
 			if(container.getEntities().get(0, 0).getX() == container.getHouse().getPositionX()+(container.getHouse().getTailleX()/2) && container.getEntities().get(0, 0).getY() == container.getHouse().getPositionY()+(container.getHouse().getTailleY()-1))
 			{
 				container.getHouse().takeDamage(container.getEntities().get(0, 0).getDamage(), 5);
 				takeDamage.play();
 			}
+		}
+		if(container.getHouse().getPV() <= 0) //game over
+		{
+			gameOver.play();
+			sbg.enterState(0);
 		}
 		
 		

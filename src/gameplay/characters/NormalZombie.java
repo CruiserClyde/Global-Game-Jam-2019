@@ -24,7 +24,7 @@ public class NormalZombie extends Ennemies{
 	private */
 
 	public NormalZombie(StateBasedGame jeu) {
-		super((int)(Math.random()*24), (int)(Math.random()*24), 50, 0, 2, "zombie3", jeu);
+		super((int)(Math.random()*22)+1, (int)(Math.random()*22)+1, 50, 0, 2, "zombie3", jeu);
 	}/*
 	public  void load() throws SlickException{
 		normalZombie = new Image(sprite);

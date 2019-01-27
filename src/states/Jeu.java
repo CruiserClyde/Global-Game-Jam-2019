@@ -270,18 +270,22 @@ public class Jeu extends BasicGameState {
 	}
 	
 	public Vector<Moves> calculatePathToHouse(Point start) throws PathfindingException {
-		Matrix<State> laby = new Matrix<State>(Launcher.WIDTH, Launcher.HEIGHT);
+		Matrix<State> laby = new Matrix<State>(Launcher.WIDTH/32, Launcher.HEIGHT/32);
 		for (int i=0;i<Launcher.WIDTH/32;i++) {
 			for (int k=0;k<Launcher.HEIGHT/32;k++) {
-				if (container.getEntities().get(i, k) != null || container.getWeapons().get(i, k) != null) {
+				if (container.getEntities().get(i, k) != null || container.getWeapons().get(i, k) != null ||
+						(i >= container.getHouse().getPositionX() && i < container.getHouse().getPositionX()+container.getHouse().getTailleX() &&
+								k >= container.getHouse().getPositionY() && k < container.getHouse().getPositionY()+container.getHouse().getTailleY()) ||
+						i==0 || i==(Launcher.WIDTH/32)-1 || k==0 || k==(Launcher.HEIGHT/32)-1) {
 					laby.set(i, k, State.Obstacle);
 				} else {
 					laby.set(i, k, State.Void);
 				}
 			}
 		}
-		System.out.println(container.getHouse().getPositionX()+(container.getHouse().getTailleX()/2)+" - "+container.getHouse().getPositionY()+(container.getHouse().getTailleY()/2));
-		PathFinder pf = new PathFinder(laby, start, new Point(container.getHouse().getPositionX()+(container.getHouse().getTailleX()/2), container.getHouse().getPositionY()+(container.getHouse().getTailleY()/2)));
+		laby.set(container.getHouse().getPositionX()+(container.getHouse().getTailleX()/2), container.getHouse().getPositionY()+(container.getHouse().getTailleY()-1), State.Void);
+		//System.out.println((container.getHouse().getPositionX()+(container.getHouse().getTailleX()/2))+" - "+(container.getHouse().getPositionY()+(container.getHouse().getTailleY()/2)));
+		PathFinder pf = new PathFinder(laby, start, new Point(container.getHouse().getPositionX()+(container.getHouse().getTailleX()/2), container.getHouse().getPositionY()+(container.getHouse().getTailleY()-1)));
 		return pf.searchPath();
 	}
 	

@@ -27,8 +27,7 @@ public abstract class Ennemies  extends Entity {
 	@Override
 	public void update(int delta) {
 		// TODO Auto-generated method stub
-		System.out.println("X: "+x +" Y: "+y);
-		System.out.println((Jeu)sbg.getState(1));
+		//System.out.println("X: "+x +" Y: "+y);
 		
 		try {
 			Vector<Moves> path = ((Jeu)sbg.getState(1)).calculatePathToHouse(new Point(x, y));

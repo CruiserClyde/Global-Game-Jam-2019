@@ -7,6 +7,10 @@ import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
+import org.newdawn.slick.util.FontUtils;
+
+import main.Launcher;
+import ressources.Ressources;
 
 public class Pause extends BasicGameState {
 
@@ -33,29 +37,31 @@ public class Pause extends BasicGameState {
 	@Override
 	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
 		g.setColor(Color.white);
-		g.drawString("PAUSE",300,200);
+		FontUtils.drawCenter(Ressources.FONTS.get("title"), "Pause", 0, 200, Launcher.WIDTH, Color.green);
+		g.setFont(Ressources.FONTS.get("script"));
+		//g.drawString("PAUSE",300, 200);
 		if(choix == 0) {
 			g.setColor(Color.red);
 			g.drawString("Reprendre", 250,250);
 			g.setColor(Color.white);
-			g.drawString("Sauvegarder / Retour menu", 250, 270);
-			g.drawString("Menu Principal",250,290);
+			g.drawString("Sauvegarder / Retour menu", 250, 290);
+			g.drawString("Menu Principal",250,330);
 		}
 		else if(choix == 1) {
 			g.setColor(Color.white);
 			g.drawString("Reprendre",250,250);
 			g.setColor(Color.red);
-			g.drawString("Sauvegarder / Retour menu", 250, 270);
+			g.drawString("Sauvegarder / Retour menu", 250, 290);
 			g.setColor(Color.white);
-			g.drawString("Menu Principal",250,290);			
+			g.drawString("Menu Principal",250,330);			
 		}
 		else if(choix == 2) {
 			g.setColor(Color.white);
 			g.drawString("Reprendre",250,250);
 			g.setColor(Color.white);
-			g.drawString("Sauvegarder / Retour menu", 250, 270);
+			g.drawString("Sauvegarder / Retour menu", 250, 290);
 			g.setColor(Color.red);
-			g.drawString("Menu Principal",250,290);	
+			g.drawString("Menu Principal",250,330);	
 		}
 	}
 

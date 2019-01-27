@@ -33,7 +33,7 @@ public abstract class Entity implements Serializable, Rendering {
 		this.side = side;
 	}
 	
-	public void getDamage(int value) {
+	public void getHurt(int value) {
 		HP -= (value-shield);
 	}
 

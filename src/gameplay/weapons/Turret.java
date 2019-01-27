@@ -37,7 +37,7 @@ public class Turret extends Weapon {
 			for (int dy=-1;dy<=1;dy++) {
 				if (x+dx >= 0 && x+dx < Launcher.WIDTH/32 && y+dy >= 0 && y+dy < Launcher.HEIGHT/32) {
 					if (entities.get(x+dx, y+dy) != null && entities.get(x+dx, y+dy).getSide().equals(Side.Ennemy)) {
-						entities.get(x+dx, y+dy).getDamage(10);
+						entities.get(x+dx, y+dy).getHurt(10);
 						touched++;
 					}
 				}

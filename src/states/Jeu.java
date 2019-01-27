@@ -139,7 +139,6 @@ public class Jeu extends BasicGameState {
 		toitFutur = new Roof (2500,"toitFutur",Tier.Futuriste);
 		fenetreFutur = new Window (2500, "fenetreFutur",Tier.Futuriste);
 		
-		
 		nextUpgrade[0] = murStandard;
 		nextUpgrade[1] = toitTuile;
 		nextUpgrade[2] = porteStandard;
@@ -225,7 +224,6 @@ public class Jeu extends BasicGameState {
 			}
 			//zone trigger cliqué
 		}
-
 		
 	}
 

@@ -8,26 +8,35 @@ import gameplay.characters.Entity;
 import gameplay.interfaces.Rendering;
 import pathfinderlib.basics.Matrix;
 import ressources.Ressources;
+import gameplay.Container;
 
 public abstract class Weapon implements Serializable, Rendering {
 	private static final long serialVersionUID = 1L;
-	private int x;
-	private int y;
-	private int hp;
-	private int charge;
-	private int range;
+	protected int x;
+	protected int y;
+	protected int hp;
+	protected int shield;
+	protected int charge;
+	protected int range;
 	private int price;
 	private String sprite;
+	protected transient Container cnt;
 
-	public Weapon(int x, int y, int hp, int range, int price, String sprite) {
+	public Weapon(int x, int y, int hp, int shield, int range, int price, String sprite, Container cnt) {
 		// TODO Auto-generated constructor stub
 		this.x = x;
 		this.y = y;
 		this.hp = hp;
 		charge = 0;
+		this.shield = shield;
 		this.range = range;
 		this.price = price;
 		this.sprite = sprite;
+		this.cnt = cnt;
+	}
+	
+	public void getDamage(int value) {
+		hp -= (value-shield);
 	}
 	
 	public abstract void trigger(Matrix<Entity> entities);
@@ -60,6 +69,10 @@ public abstract class Weapon implements Serializable, Rendering {
 
 	public int getPrice() {
 		return price;
+	}
+
+	public void setCnt(Container cnt) {
+		this.cnt = cnt;
 	}
 
 }

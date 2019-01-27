@@ -20,8 +20,9 @@ public abstract class Entity implements Serializable, Rendering {
 	protected int damage;
 	// Dommages reçus
 	private String sprite;
+	protected Side side;
 	
-	public Entity(int x, int y, int HPmax, int shield, int dmg, String sprite) {
+	public Entity(int x, int y, int HPmax, int shield, int dmg, String sprite, Side side) {
 		this.x = x;
 		this.y = y;
 		this.HP = HPmax;
@@ -29,6 +30,7 @@ public abstract class Entity implements Serializable, Rendering {
 		this.shield = shield;
 		this.damage = dmg;
 		this.sprite = sprite;
+		this.side = side;
 	}
 	
 	public void getDamage(int value) {
@@ -38,5 +40,37 @@ public abstract class Entity implements Serializable, Rendering {
 	@Override
 	public void render(Graphics g) {
 		g.drawImage(Ressources.SPRITES.get(sprite), x*32, y*32);
+	}
+
+	public int getHPmax() {
+		return HPmax;
+	}
+
+	public int getHP() {
+		return HP;
+	}
+
+	public int getShield() {
+		return shield;
+	}
+
+	public int getX() {
+		return x;
+	}
+
+	public int getY() {
+		return y;
+	}
+
+	public int getDamage() {
+		return damage;
+	}
+
+	public String getSprite() {
+		return sprite;
+	}
+
+	public Side getSide() {
+		return side;
 	}	
 }

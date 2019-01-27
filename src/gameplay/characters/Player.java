@@ -12,7 +12,7 @@ public class Player extends Entity {
 	
 	
 	public Player(int x, int y, int HPmax, int shield, int dmg, String sprite, StateBasedGame sbg) {
-		super(x, y, HPmax, shield, dmg, sprite);
+		super(x, y, HPmax, shield, dmg, sprite, Side.Ally);
 		
 	}
 

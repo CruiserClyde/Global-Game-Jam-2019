@@ -225,7 +225,6 @@ public class Jeu extends BasicGameState {
 	}
 	
 	public void mousePressed(int button, int x, int y) {
-		System.out.println("X:"+x+" Y:"+y);
 		if(button==Input.MOUSE_LEFT_BUTTON && achatM && x>=625 && x<=785 && y>=10 && y<=170){
 			kredit=kredit-prixM;
 		}

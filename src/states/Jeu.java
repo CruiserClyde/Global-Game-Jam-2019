@@ -35,8 +35,7 @@ public class Jeu extends BasicGameState {
 	private boolean pause,vague;
 	private Container container;
 	private Composant nextUpgrade[];
-	int kredit,prixM,prixT,prixF,prixP;
-	
+	private int kredit;	
 	private Door porteNul;
 	private Wall murNul;
 	private Roof toitNul;
@@ -57,6 +56,9 @@ public class Jeu extends BasicGameState {
 	private Roof toitPierre;
 	private Window fenetrePierre;
 	
+	private boolean achatM,achatP,achatF,achatT;
+	private int prixM,prixP,prixF,prixT;
+	
 	public Jeu() {	
 	}
 
@@ -67,10 +69,11 @@ public class Jeu extends BasicGameState {
 		vague=false;
 		nextUpgrade = new Composant[4];
 		kredit=0;
-		prixM=25;
-		prixT=25;
-		prixF=25;
-		prixP=25;
+		
+		achatM=false;
+		achatP=false;
+		achatF=false;
+		achatT=false;
 		
 		porteNul = new Door (0,"porteNul",Tier.Nul);
 		murNul = new Wall (0,"murNul",Tier.Nul);
@@ -93,9 +96,9 @@ public class Jeu extends BasicGameState {
 		fenetrePierre = new Window (125, "fenetrePierre",Tier.Pierre);
 		
 		
-		nextUpgrade[0] = porteStandard;
-		nextUpgrade[1] = murStandard;
-		nextUpgrade[2] = toitTuile;
+		nextUpgrade[0] = murStandard;
+		nextUpgrade[1] = toitTuile;
+		nextUpgrade[2] = porteStandard;
 		nextUpgrade[3] = fenetreStandard;
 
 	}
@@ -119,7 +122,7 @@ public class Jeu extends BasicGameState {
 			g.fillRect(625, 370, 10, 10);
 			g.fillRect(625, 550, 10, 10);
 			g.setColor(Color.black);
-			g.drawString("Krédits: "+ kredit, 610, 750);
+			g.drawString("KrÃ©dits: "+ kredit, 610, 750);
 			if(kredit>=prixM) {
 				g.setColor(Color.white);
 				g.drawString("upgrade: "+prixM+" K", 625, 170);	
@@ -162,16 +165,11 @@ public class Jeu extends BasicGameState {
 	@Override
 	public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException {
 		
-		
-		switch(container.getHouse().getComp(0).getTier())
+		/*switch(container.getHouse().getComp(0).getTier())
 		{
-		
-		}
-		
-		if(pause) {
 			pause=false;
 			sbg.enterState(3);
-		}
+		}*/
 		
 	}
 
@@ -213,5 +211,65 @@ public class Jeu extends BasicGameState {
 	
 	public void mousePressed(int button, int x, int y) {
 		System.out.println("X:"+x+" Y:"+y);
+		if(button==Input.MOUSE_LEFT_BUTTON && achatM && x>=625 && x<=785 && y>=10 && y<=170)
+		{
+			kredit=kredit-nextUpgrade[0].getPrix();
+			container.getHouse().setWall((Wall) nextUpgrade[0]);
+			
+			if(nextUpgrade[0].getTier() == Tier.Standard)
+			{
+				nextUpgrade[0] = murBois;
+			}
+			else if(nextUpgrade[0].getTier() == Tier.Bois)
+			{
+				nextUpgrade[0] = murPierre;
+			}
+			
+		}
+		
+		if(button==Input.MOUSE_LEFT_BUTTON && achatT && x>=625 && x<=785 && y>=190 && y<=350) 
+		{
+			kredit=kredit-nextUpgrade[1].getPrix();
+			container.getHouse().setRoof((Roof) nextUpgrade[1]);
+			
+			if(nextUpgrade[1].getTier() == Tier.Standard)
+			{
+				nextUpgrade[1] = toitBois;
+			}
+			else if(nextUpgrade[1].getTier() == Tier.Bois)
+			{
+				nextUpgrade[1] = toitPierre;
+			}
+		}
+		
+		if (button==Input.MOUSE_LEFT_BUTTON && achatP && x>=625 && x<=785 && y>=370 && y<=530)
+		{
+			kredit=kredit-nextUpgrade[2].getPrix();
+			container.getHouse().setDoor((Door) nextUpgrade[2]);
+			
+			if(nextUpgrade[2].getTier() == Tier.Standard)
+			{
+				nextUpgrade[2] = porteBois;
+			}
+			else if(nextUpgrade[2].getTier() == Tier.Bois)
+			{
+				nextUpgrade[2] = portePierre;
+			}
+		}
+		
+		if(button==Input.MOUSE_LEFT_BUTTON && achatF && x>=625 && x<=785 && y>=550 && y<=710) 
+		{
+			kredit=kredit-nextUpgrade[3].getPrix();
+			container.getHouse().setWindow((Window) nextUpgrade[3]);
+			
+			if(nextUpgrade[3].getTier() == Tier.Standard)
+			{
+				nextUpgrade[3] = fenetreBois;
+			}
+			else if(nextUpgrade[3].getTier() == Tier.Bois)
+			{
+				nextUpgrade[3] = fenetrePierre;
+			}
+		}
 	}
 }

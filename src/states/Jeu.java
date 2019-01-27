@@ -9,6 +9,7 @@ import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.Sound;
+import org.newdawn.slick.SpriteSheet;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
@@ -20,6 +21,7 @@ import gameplay.house.Roof;
 import gameplay.house.Tier;
 import gameplay.house.Wall;
 import gameplay.house.Window;
+import javafx.animation.Animation;
 import main.Launcher;
 import pathfinderlib.basics.Matrix;
 import pathfinderlib.basics.Moves;
@@ -34,6 +36,11 @@ public class Jeu extends BasicGameState {
 	public int getID() {
 		return 1;
 	}
+	
+	Image Kredit;
+	SpriteSheet Kreditss;
+	org.newdawn.slick.Animation Kredita;
+	
 	private Sound upgrade;
 	private Sound finalUpgrade;
 	
@@ -95,6 +102,10 @@ public class Jeu extends BasicGameState {
 		maxF = false;
 		maxP = false;
 		
+		Kredit=new Image("ressources/pictures/Kredit.png");
+		Kreditss=new SpriteSheet(Kredit, Kredit.getWidth()/8, Kredit.getHeight());
+		Kredita=new org.newdawn.slick.Animation(Kreditss, 100);
+		
 		upgrade = Ressources.SOUNDS.get("upgrade");
 		finalUpgrade = Ressources.SOUNDS.get("upgrade_final");
 		
@@ -153,7 +164,8 @@ public class Jeu extends BasicGameState {
 			g.fillRect(625, 370, 160 , 160);
 			g.fillRect(625, 550, 160 , 160);
 			g.setColor(Color.black);
-			g.drawString("Krédits: "+ kredit, 610, 750);
+			g.drawString("Krédits: "+ kredit, 650, 750);
+			g.drawAnimation(Kredita, 615, 740);
 			
 			if(kredit >= nextUpgrade[0].getPrix() && !maxM) 
 			{

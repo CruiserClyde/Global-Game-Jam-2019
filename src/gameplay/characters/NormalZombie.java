@@ -1,11 +1,4 @@
 package gameplay.characters;
-
-import java.awt.Point;
-import java.util.Vector;
-
-import org.newdawn.slick.Graphics;
-import org.newdawn.slick.Image;
-import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
 
 import pathfinderlib.basics.Matrix;
@@ -35,69 +28,9 @@ public class NormalZombie extends Ennemies{
 	}/*
 	public  void load() throws SlickException{
 		normalZombie = new Image(sprite);
-	}
-	public void display(Graphics g) {
-		normalZombie.draw(x,y);
-	}
-	
-	@Override
-	public void update(int delta) {
-		switch (pathfind.get(0)) {
-			case Down:
-				y -= 32;
-				break;
-			case Up:
-				y += 32;
-				break;
-			case Left:
-				x -= 32;
-				break;
-			case Right:
-				x += 32;
-				break;
-	}
-	pathfind.remove(pathfind.get(0));
-		
-	}
-	public int getHP() {
-		return HP;
-	}
-
-	public void setHP(int hP) {
-		HP = hP;
-	}
-
-	public int getDamage() {
-		return damage;
-	}
-
-	public void setDamage(int damage) {
-		this.damage = damage;
-	}
-
-	public int getHPmax() {
-		return HPmax;
-	}
-
-	public void setHPmax(int hPmax) {
-		HPmax = hPmax;
-	}
-
-	public int getShield() {
-		return shield;
-	}
-
-	public void setShield(int shield) {
-		this.shield = shield;
-	}
-
-	public int getSpeed() {
-		return speed;
-	}
-
-	public void setSpeed(int speed) {
-		this.speed = speed;
+=======
+	public NormalZombie(StateBasedGame sbg) {
+		super(position_rd_x(), position_rd_y(), 50, 0, 2, "zombie3", sbg);
+>>>>>>> branch 'dev' of https://github.com/ttgc/HomeAlone3ilVersion.git
 	}*/
-	
-
 }

@@ -83,5 +83,17 @@ public abstract class Ennemies  extends Entity {
 	public void setSbg(StateBasedGame sbg) {
 		this.sbg = sbg;
 	}
-
+	public static int position_rd_x() {
+		int x=(int)(Math.random()*24);
+		while(x>=10 && x<=15) {
+			x = (int)(Math.random()*24);
+		}return x;
+	}
+	public static int position_rd_y() {
+		int y=(int)(Math.random()*24);
+		while(y>=10 && y<=15) {
+			y = (int)(Math.random()*24);
+		}
+		return y;
+	}
 }

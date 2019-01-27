@@ -1,0 +1,9 @@
+1 => grass
+2 => grassFlowers
+3 => vide
+4 => pathNormal
+5 => pathAngled 
+6 => vide
+7 => bigRock
+8 => smallRocks
+9 => vide  

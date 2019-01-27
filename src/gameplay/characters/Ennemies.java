@@ -17,7 +17,7 @@ public abstract class Ennemies  extends Entity {
 	protected int speed;
 	
 	public Ennemies(int x, int y, int HPmax, int shield, int dmg, String sprite, StateBasedGame sbg) {
-		super(x, y, HPmax, shield, dmg, sprite);
+		super(x, y, HPmax, shield, dmg, sprite, Side.Ennemy);
 		// TODO Auto-generated constructor stub
 		nextmove = null;
 		timer = 0;

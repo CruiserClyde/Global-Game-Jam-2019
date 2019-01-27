@@ -18,7 +18,7 @@ public abstract class Allies extends Entity {
 	protected int speed;
 	
 	public Allies(int x, int y, int HPmax, int shield, int dmg, String sprite, StateBasedGame sbg) {
-		super(x, y, HPmax, shield, dmg, sprite);
+		super(x, y, HPmax, shield, dmg, sprite, Side.Ally);
 		nextmove = null;
 		timer = 0;
 	}

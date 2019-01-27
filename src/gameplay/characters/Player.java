@@ -16,7 +16,6 @@ public class Player extends Entity {
 		
 	}
 
-	
 	public void update(GameContainer gc, int delta) {
 		Input input = gc.getInput();
 		if(input.isKeyPressed(Input.KEY_UP) && y>0){

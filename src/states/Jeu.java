@@ -263,7 +263,7 @@ public class Jeu extends BasicGameState {
 	}
 	
 	public void mousePressed(int button, int x, int y) {
-		if(button==Input.MOUSE_LEFT_BUTTON && achatM && x>=625 && x<=785 && y>=10 && y<=170)
+		if(button==Input.MOUSE_LEFT_BUTTON && achatM && x>=625 && x<=785 && y>=10 && y<=170 && !vague)
 		{
 			kredit=kredit-nextUpgrade[0].getPrix();
 			container.getHouse().setWall((Wall) nextUpgrade[0]);
@@ -297,7 +297,7 @@ public class Jeu extends BasicGameState {
 			
 		}
 		
-		if(button==Input.MOUSE_LEFT_BUTTON && achatT && x>=625 && x<=785 && y>=190 && y<=350) 
+		if(button==Input.MOUSE_LEFT_BUTTON && achatT && x>=625 && x<=785 && y>=190 && y<=350 && !vague) 
 		{
 			kredit=kredit-nextUpgrade[1].getPrix();
 			container.getHouse().setRoof((Roof) nextUpgrade[1]);
@@ -330,7 +330,7 @@ public class Jeu extends BasicGameState {
 			}
 		}
 		
-		if (button==Input.MOUSE_LEFT_BUTTON && achatP && x>=625 && x<=785 && y>=370 && y<=530)
+		if (button==Input.MOUSE_LEFT_BUTTON && achatP && x>=625 && x<=785 && y>=370 && y<=530 && !vague)
 		{
 			kredit=kredit-nextUpgrade[2].getPrix();
 			container.getHouse().setDoor((Door) nextUpgrade[2]);
@@ -362,7 +362,7 @@ public class Jeu extends BasicGameState {
 			}
 		}
 		
-		if(button==Input.MOUSE_LEFT_BUTTON && achatF && x>=625 && x<=785 && y>=550 && y<=710)
+		if(button==Input.MOUSE_LEFT_BUTTON && achatF && x>=625 && x<=785 && y>=550 && y<=710 && !vague)
 		{
 			kredit=kredit-nextUpgrade[3].getPrix();
 			container.getHouse().setWindow((Window) nextUpgrade[3]);

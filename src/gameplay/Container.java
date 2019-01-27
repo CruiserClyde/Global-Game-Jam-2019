@@ -7,6 +7,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
 
+import org.lwjgl.Sys;
 import org.newdawn.slick.Graphics;
 import gameplay.characters.Entity;
 import gameplay.house.Door;
@@ -47,6 +48,8 @@ public final class Container implements Serializable, Rendering {
 		
 		File f = new File("map.txt");
 		if (!f.exists() || !f.isFile()) {
+			System.out.println(f.getAbsolutePath());
+			System.out.println(System.getProperty("user.dir"));
 			System.exit(1);
 		}
 		List<String> lignes = null;
@@ -58,6 +61,7 @@ public final class Container implements Serializable, Rendering {
 			int mapstart = 0;
 			do {
 				if (mapstart >= lignes.size()) {
+					System.out.println("error 2");
 					System.exit(2);
 				}
 				width = lignes.get(mapstart).trim().length();
@@ -65,6 +69,7 @@ public final class Container implements Serializable, Rendering {
 			} while (lignes.get(mapstart).isEmpty());
 			mapstart--;
 			if (height != lignes.size() || width != lignes.get(0).trim().length()) {
+				System.out.println("error 3");
 				System.exit(3);
 			}
 		} catch (IOException e) {

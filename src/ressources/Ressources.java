@@ -111,6 +111,12 @@ public final class Ressources {
 		SPRITES.put("pathAngled", new Image("ressources/pictures/Sprites/pathAngled.png"));
 		SPRITES.put("bigRock", new Image("ressources/pictures/Sprites/bigRock.png"));
 		SPRITES.put("smallRocks", new Image("ressources/pictures/Sprites/smallRocks.png"));
+		
+		//tourelles
+		SPRITES.put("turret1", new Image("ressources/pictures/turrets/tourelle1.png"));
+		SPRITES.put("turret2", new Image("ressources/pictures/turrets/tourelle2.png"));
+		SPRITES.put("turret3", new Image("ressources/pictures/turrets/tourelle3.png"));
+		SPRITES.put("turret4", new Image("ressources/pictures/turrets/tourelle4.png"));
 	}
 	
 	public static void initAnimation() throws SlickException {

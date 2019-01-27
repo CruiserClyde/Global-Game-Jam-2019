@@ -26,6 +26,8 @@ public abstract class Ennemies  extends Entity {
 	@Override
 	public void update(int delta) {
 		// TODO Auto-generated method stub
+		System.out.println("X: "+x +" Y: "+y);
+		
 		try {
 			Vector<Moves> path = ((Jeu)sbg.getState(1)).calculatePathToHouse(new Point(x, y));
 			if (!path.isEmpty()) {
@@ -33,26 +35,38 @@ public abstract class Ennemies  extends Entity {
 			} else {
 				nextmove = null;
 			}
-		} catch (PathfindingException e) {
+		} 
+		catch (PathfindingException e) 
+		{
 			// TODO Auto-generated catch block
 			nextmove = null;
 		}
+		catch (NullPointerException e) 
+		{
+				// TODO Auto-generated catch block
+				nextmove = null;
+		}
 		timer+=delta;
 		
-		if (timer >= speed) {
-			switch (nextmove) {
-			case Down:
-				y++;
-				break;
-			case Left:
-				x--;
-				break;
-			case Right:
-				x++;
-				break;
-			case Up:
-				y--;
-				break;
+		if (timer >= speed ) 
+		{
+			if(nextmove != null)
+			{
+				switch (nextmove) 
+				{
+				case Down:
+					y++;
+					break;
+				case Left:
+					x--;
+					break;
+				case Right:
+					x++;
+					break;
+				case Up:
+					y--;
+					break;
+				}
 			}
 			timer -= 1000;
 		}

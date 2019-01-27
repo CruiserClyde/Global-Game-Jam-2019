@@ -13,6 +13,7 @@ import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
 import gameplay.Container;
+import gameplay.characters.NormalZombie;
 import gameplay.house.Composant;
 import gameplay.house.Door;
 import gameplay.house.Roof;
@@ -72,6 +73,8 @@ public class Jeu extends BasicGameState {
 	private Roof toitFutur;
 	private Window fenetreFutur;
 	
+	private NormalZombie nz1;
+	
 	boolean quit;
 	public Jeu() {	
 	}
@@ -130,11 +133,14 @@ public class Jeu extends BasicGameState {
 		nextUpgrade[1] = toitTuile;
 		nextUpgrade[2] = porteStandard;
 		nextUpgrade[3] = fenetreStandard;
+		
+		nz1 = new NormalZombie(sbg);
 	}
 
 	@Override
 	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {		
 		container.render(g);
+		nz1.render(g);
 
 		if(!vague)
 		{
@@ -211,9 +217,14 @@ public class Jeu extends BasicGameState {
 	}
 
 	@Override
-	public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException {
+	public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException 
+	{
 		
 		container.update(delta);
+		if(!pause && vague)
+		{
+			nz1.update(delta);
+		}
 		
 		
 		if(pause) 
